@@ -14,8 +14,14 @@
        KERNEL — Oscilloscope Identity
     ───────────────────────────────────────────── */
 
-    @keyframes krnlScan  { 0% { top: -2%; } 100% { top: 102%; } }
-    @keyframes krnlBlink { 0%, 100% { opacity: 1; } 50% { opacity: .2; } }
+    @keyframes krnlScan     { 0% { top: -2%; } 100% { top: 102%; } }
+    @keyframes krnlSpark    { 0%{stroke-dashoffset:100;opacity:0} 8%{opacity:1} 70%{opacity:1} 100%{stroke-dashoffset:0;opacity:0} }
+    @keyframes krnlNode     { 0%,58%{transform:scale(1);fill:#0f5651} 72%{transform:scale(1.55);fill:#dffcf8} 88%,100%{transform:scale(1);fill:#0f5651} }
+    @keyframes krnlCore     { 0%,100%{opacity:0;transform:scale(.55)} 50%{opacity:.45;transform:scale(1.45)} }
+    @keyframes krnlPin      { 0%,100%{stroke:#0d3a44} 50%{stroke:#1fbfb8} }
+    @keyframes krnlCoreDie  { 0%,100%{fill:#16978f} 50%{fill:#2fe4d8} }
+    .krnlNode { transform-box:fill-box; transform-origin:center; }
+    .krnlGlow { transform-box:fill-box; transform-origin:center; }
 
     :root {
       --bg:        #0a0d14;
@@ -97,9 +103,7 @@
     .nav-logo { display: flex; align-items: center; gap: 10px; }
     .kernel-mark {
       display: block;
-      color: var(--accent);
       flex-shrink: 0;
-      animation: krnlBlink 3.2s ease-in-out infinite;
       filter: drop-shadow(0 0 4px rgba(31,191,184,0.4));
     }
     .nav-wordmark {
@@ -430,22 +434,41 @@
   <div class="wrap">
     <a href="#" class="nav-logo">
       <svg class="kernel-mark" width="28" height="28" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <g stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity=".4">
-          <line x1="44" y1="18" x2="44" y2="8"/><line x1="60" y1="18" x2="60" y2="8"/><line x1="76" y1="18" x2="76" y2="8"/>
-          <line x1="44" y1="102" x2="44" y2="112"/><line x1="60" y1="102" x2="60" y2="112"/><line x1="76" y1="102" x2="76" y2="112"/>
-          <line x1="18" y1="44" x2="8" y2="44"/><line x1="18" y1="60" x2="8" y2="60"/><line x1="18" y1="76" x2="8" y2="76"/>
-          <line x1="102" y1="44" x2="112" y2="44"/><line x1="102" y1="60" x2="112" y2="60"/><line x1="102" y1="76" x2="112" y2="76"/>
+        <g stroke-width="3" stroke-linecap="round">
+          <line x1="44" y1="18" x2="44" y2="8" style="stroke:#0d3a44;animation:krnlPin 1.7s ease-in-out infinite;animation-delay:0s"/>
+          <line x1="60" y1="18" x2="60" y2="8" style="stroke:#0d3a44;animation:krnlPin 1.7s ease-in-out infinite;animation-delay:.1s"/>
+          <line x1="76" y1="18" x2="76" y2="8" style="stroke:#0d3a44;animation:krnlPin 1.7s ease-in-out infinite;animation-delay:.2s"/>
+          <line x1="44" y1="102" x2="44" y2="112" style="stroke:#0d3a44;animation:krnlPin 1.7s ease-in-out infinite;animation-delay:.85s"/>
+          <line x1="60" y1="102" x2="60" y2="112" style="stroke:#0d3a44;animation:krnlPin 1.7s ease-in-out infinite;animation-delay:.95s"/>
+          <line x1="76" y1="102" x2="76" y2="112" style="stroke:#0d3a44;animation:krnlPin 1.7s ease-in-out infinite;animation-delay:1.05s"/>
+          <line x1="18" y1="44" x2="8" y2="44" style="stroke:#0d3a44;animation:krnlPin 1.7s ease-in-out infinite;animation-delay:.5s"/>
+          <line x1="18" y1="60" x2="8" y2="60" style="stroke:#0d3a44;animation:krnlPin 1.7s ease-in-out infinite;animation-delay:.6s"/>
+          <line x1="18" y1="76" x2="8" y2="76" style="stroke:#0d3a44;animation:krnlPin 1.7s ease-in-out infinite;animation-delay:.7s"/>
+          <line x1="102" y1="44" x2="112" y2="44" style="stroke:#0d3a44;animation:krnlPin 1.7s ease-in-out infinite;animation-delay:1.2s"/>
+          <line x1="102" y1="60" x2="112" y2="60" style="stroke:#0d3a44;animation:krnlPin 1.7s ease-in-out infinite;animation-delay:1.3s"/>
+          <line x1="102" y1="76" x2="112" y2="76" style="stroke:#0d3a44;animation:krnlPin 1.7s ease-in-out infinite;animation-delay:1.4s"/>
         </g>
-        <rect x="18" y="18" width="84" height="84" rx="20" stroke="currentColor" stroke-width="3" opacity=".4"/>
-        <g stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity=".75">
+        <rect x="18" y="18" width="84" height="84" rx="20" stroke="#15807a" stroke-width="3"/>
+        <g stroke="#0f5651" stroke-width="3" stroke-linecap="round">
           <line x1="60" y1="60" x2="86" y2="60"/><line x1="60" y1="60" x2="73" y2="37.5"/><line x1="60" y1="60" x2="47" y2="37.5"/>
           <line x1="60" y1="60" x2="34" y2="60"/><line x1="60" y1="60" x2="47" y2="82.5"/><line x1="60" y1="60" x2="73" y2="82.5"/>
         </g>
-        <g fill="currentColor">
-          <circle cx="86" cy="60" r="4.5"/><circle cx="73" cy="37.5" r="4.5"/><circle cx="47" cy="37.5" r="4.5"/>
-          <circle cx="34" cy="60" r="4.5"/><circle cx="47" cy="82.5" r="4.5"/><circle cx="73" cy="82.5" r="4.5"/>
+        <g stroke="#bef9f3" stroke-width="3.4" stroke-linecap="round" pathLength="100" stroke-dasharray="16 84">
+          <line x1="60" y1="60" x2="86" y2="60" style="animation:krnlSpark 1.7s linear infinite;animation-delay:0s"/>
+          <line x1="60" y1="60" x2="73" y2="37.5" style="animation:krnlSpark 1.7s linear infinite;animation-delay:.28s"/>
+          <line x1="60" y1="60" x2="47" y2="37.5" style="animation:krnlSpark 1.7s linear infinite;animation-delay:.57s"/>
+          <line x1="60" y1="60" x2="34" y2="60" style="animation:krnlSpark 1.7s linear infinite;animation-delay:.85s"/>
+          <line x1="60" y1="60" x2="47" y2="82.5" style="animation:krnlSpark 1.7s linear infinite;animation-delay:1.13s"/>
+          <line x1="60" y1="60" x2="73" y2="82.5" style="animation:krnlSpark 1.7s linear infinite;animation-delay:1.42s"/>
         </g>
-        <rect x="49" y="49" width="22" height="22" rx="6" fill="currentColor"/>
+        <circle class="krnlNode" cx="86" cy="60" r="4.5" style="fill:#0f5651;animation:krnlNode 1.7s ease-out infinite;animation-delay:0s"/>
+        <circle class="krnlNode" cx="73" cy="37.5" r="4.5" style="fill:#0f5651;animation:krnlNode 1.7s ease-out infinite;animation-delay:.28s"/>
+        <circle class="krnlNode" cx="47" cy="37.5" r="4.5" style="fill:#0f5651;animation:krnlNode 1.7s ease-out infinite;animation-delay:.57s"/>
+        <circle class="krnlNode" cx="34" cy="60" r="4.5" style="fill:#0f5651;animation:krnlNode 1.7s ease-out infinite;animation-delay:.85s"/>
+        <circle class="krnlNode" cx="47" cy="82.5" r="4.5" style="fill:#0f5651;animation:krnlNode 1.7s ease-out infinite;animation-delay:1.13s"/>
+        <circle class="krnlNode" cx="73" cy="82.5" r="4.5" style="fill:#0f5651;animation:krnlNode 1.7s ease-out infinite;animation-delay:1.42s"/>
+        <circle class="krnlGlow" cx="60" cy="60" r="15" fill="#1fbfb8" style="animation:krnlCore 1.7s ease-in-out infinite;"/>
+        <rect x="49" y="49" width="22" height="22" rx="6" style="animation:krnlCoreDie 1.7s ease-in-out infinite;"/>
       </svg>
       <span class="nav-wordmark">KERNEL</span>
     </a>
@@ -468,23 +491,42 @@
     <p class="hero-sublabel">Hamburg · Est. 2026 · Cross-Genre</p>
 
     <div style="display:flex;align-items:center;gap:20px;margin-bottom:20px;">
-      <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:clamp(72px,18vw,100px);height:clamp(72px,18vw,100px);color:var(--accent);display:block;flex-shrink:0;filter:drop-shadow(0 0 8px rgba(31,191,184,0.35))">
-        <g stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity=".35">
-          <line x1="44" y1="18" x2="44" y2="8"/><line x1="60" y1="18" x2="60" y2="8"/><line x1="76" y1="18" x2="76" y2="8"/>
-          <line x1="44" y1="102" x2="44" y2="112"/><line x1="60" y1="102" x2="60" y2="112"/><line x1="76" y1="102" x2="76" y2="112"/>
-          <line x1="18" y1="44" x2="8" y2="44"/><line x1="18" y1="60" x2="8" y2="60"/><line x1="18" y1="76" x2="8" y2="76"/>
-          <line x1="102" y1="44" x2="112" y2="44"/><line x1="102" y1="60" x2="112" y2="60"/><line x1="102" y1="76" x2="112" y2="76"/>
+      <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:clamp(72px,18vw,100px);height:clamp(72px,18vw,100px);display:block;flex-shrink:0;filter:drop-shadow(0 0 12px rgba(31,191,184,0.45))">
+        <g stroke-width="3" stroke-linecap="round">
+          <line x1="44" y1="18" x2="44" y2="8" style="stroke:#0d3a44;animation:krnlPin 1.7s ease-in-out infinite;animation-delay:0s"/>
+          <line x1="60" y1="18" x2="60" y2="8" style="stroke:#0d3a44;animation:krnlPin 1.7s ease-in-out infinite;animation-delay:.1s"/>
+          <line x1="76" y1="18" x2="76" y2="8" style="stroke:#0d3a44;animation:krnlPin 1.7s ease-in-out infinite;animation-delay:.2s"/>
+          <line x1="44" y1="102" x2="44" y2="112" style="stroke:#0d3a44;animation:krnlPin 1.7s ease-in-out infinite;animation-delay:.85s"/>
+          <line x1="60" y1="102" x2="60" y2="112" style="stroke:#0d3a44;animation:krnlPin 1.7s ease-in-out infinite;animation-delay:.95s"/>
+          <line x1="76" y1="102" x2="76" y2="112" style="stroke:#0d3a44;animation:krnlPin 1.7s ease-in-out infinite;animation-delay:1.05s"/>
+          <line x1="18" y1="44" x2="8" y2="44" style="stroke:#0d3a44;animation:krnlPin 1.7s ease-in-out infinite;animation-delay:.5s"/>
+          <line x1="18" y1="60" x2="8" y2="60" style="stroke:#0d3a44;animation:krnlPin 1.7s ease-in-out infinite;animation-delay:.6s"/>
+          <line x1="18" y1="76" x2="8" y2="76" style="stroke:#0d3a44;animation:krnlPin 1.7s ease-in-out infinite;animation-delay:.7s"/>
+          <line x1="102" y1="44" x2="112" y2="44" style="stroke:#0d3a44;animation:krnlPin 1.7s ease-in-out infinite;animation-delay:1.2s"/>
+          <line x1="102" y1="60" x2="112" y2="60" style="stroke:#0d3a44;animation:krnlPin 1.7s ease-in-out infinite;animation-delay:1.3s"/>
+          <line x1="102" y1="76" x2="112" y2="76" style="stroke:#0d3a44;animation:krnlPin 1.7s ease-in-out infinite;animation-delay:1.4s"/>
         </g>
-        <rect x="18" y="18" width="84" height="84" rx="20" stroke="currentColor" stroke-width="3" opacity=".35"/>
-        <g stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity=".8">
+        <rect x="18" y="18" width="84" height="84" rx="20" stroke="#15807a" stroke-width="3"/>
+        <g stroke="#0f5651" stroke-width="3" stroke-linecap="round">
           <line x1="60" y1="60" x2="86" y2="60"/><line x1="60" y1="60" x2="73" y2="37.5"/><line x1="60" y1="60" x2="47" y2="37.5"/>
           <line x1="60" y1="60" x2="34" y2="60"/><line x1="60" y1="60" x2="47" y2="82.5"/><line x1="60" y1="60" x2="73" y2="82.5"/>
         </g>
-        <g fill="currentColor">
-          <circle cx="86" cy="60" r="4.5"/><circle cx="73" cy="37.5" r="4.5"/><circle cx="47" cy="37.5" r="4.5"/>
-          <circle cx="34" cy="60" r="4.5"/><circle cx="47" cy="82.5" r="4.5"/><circle cx="73" cy="82.5" r="4.5"/>
+        <g stroke="#bef9f3" stroke-width="3.4" stroke-linecap="round" pathLength="100" stroke-dasharray="16 84">
+          <line x1="60" y1="60" x2="86" y2="60" style="animation:krnlSpark 1.7s linear infinite;animation-delay:0s"/>
+          <line x1="60" y1="60" x2="73" y2="37.5" style="animation:krnlSpark 1.7s linear infinite;animation-delay:.28s"/>
+          <line x1="60" y1="60" x2="47" y2="37.5" style="animation:krnlSpark 1.7s linear infinite;animation-delay:.57s"/>
+          <line x1="60" y1="60" x2="34" y2="60" style="animation:krnlSpark 1.7s linear infinite;animation-delay:.85s"/>
+          <line x1="60" y1="60" x2="47" y2="82.5" style="animation:krnlSpark 1.7s linear infinite;animation-delay:1.13s"/>
+          <line x1="60" y1="60" x2="73" y2="82.5" style="animation:krnlSpark 1.7s linear infinite;animation-delay:1.42s"/>
         </g>
-        <rect x="49" y="49" width="22" height="22" rx="6" fill="currentColor"/>
+        <circle class="krnlNode" cx="86" cy="60" r="4.5" style="fill:#0f5651;animation:krnlNode 1.7s ease-out infinite;animation-delay:0s"/>
+        <circle class="krnlNode" cx="73" cy="37.5" r="4.5" style="fill:#0f5651;animation:krnlNode 1.7s ease-out infinite;animation-delay:.28s"/>
+        <circle class="krnlNode" cx="47" cy="37.5" r="4.5" style="fill:#0f5651;animation:krnlNode 1.7s ease-out infinite;animation-delay:.57s"/>
+        <circle class="krnlNode" cx="34" cy="60" r="4.5" style="fill:#0f5651;animation:krnlNode 1.7s ease-out infinite;animation-delay:.85s"/>
+        <circle class="krnlNode" cx="47" cy="82.5" r="4.5" style="fill:#0f5651;animation:krnlNode 1.7s ease-out infinite;animation-delay:1.13s"/>
+        <circle class="krnlNode" cx="73" cy="82.5" r="4.5" style="fill:#0f5651;animation:krnlNode 1.7s ease-out infinite;animation-delay:1.42s"/>
+        <circle class="krnlGlow" cx="60" cy="60" r="15" fill="#1fbfb8" style="animation:krnlCore 1.7s ease-in-out infinite;"/>
+        <rect x="49" y="49" width="22" height="22" rx="6" style="animation:krnlCoreDie 1.7s ease-in-out infinite;"/>
       </svg>
       <div>
         <h1 class="hero-wordmark" style="margin-bottom:8px;">KERNEL</h1>
@@ -641,23 +683,42 @@
   <div class="wrap">
     <div class="footer-inner">
       <div class="footer-logo">
-        <svg width="20" height="20" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" style="color:var(--accent);display:block;flex-shrink:0">
-          <g stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity=".4">
-            <line x1="44" y1="18" x2="44" y2="8"/><line x1="60" y1="18" x2="60" y2="8"/><line x1="76" y1="18" x2="76" y2="8"/>
-            <line x1="44" y1="102" x2="44" y2="112"/><line x1="60" y1="102" x2="60" y2="112"/><line x1="76" y1="102" x2="76" y2="112"/>
-            <line x1="18" y1="44" x2="8" y2="44"/><line x1="18" y1="60" x2="8" y2="60"/><line x1="18" y1="76" x2="8" y2="76"/>
-            <line x1="102" y1="44" x2="112" y2="44"/><line x1="102" y1="60" x2="112" y2="60"/><line x1="102" y1="76" x2="112" y2="76"/>
+        <svg width="20" height="20" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block;flex-shrink:0">
+          <g stroke-width="3" stroke-linecap="round">
+            <line x1="44" y1="18" x2="44" y2="8" style="stroke:#0d3a44;animation:krnlPin 1.7s ease-in-out infinite;animation-delay:0s"/>
+            <line x1="60" y1="18" x2="60" y2="8" style="stroke:#0d3a44;animation:krnlPin 1.7s ease-in-out infinite;animation-delay:.1s"/>
+            <line x1="76" y1="18" x2="76" y2="8" style="stroke:#0d3a44;animation:krnlPin 1.7s ease-in-out infinite;animation-delay:.2s"/>
+            <line x1="44" y1="102" x2="44" y2="112" style="stroke:#0d3a44;animation:krnlPin 1.7s ease-in-out infinite;animation-delay:.85s"/>
+            <line x1="60" y1="102" x2="60" y2="112" style="stroke:#0d3a44;animation:krnlPin 1.7s ease-in-out infinite;animation-delay:.95s"/>
+            <line x1="76" y1="102" x2="76" y2="112" style="stroke:#0d3a44;animation:krnlPin 1.7s ease-in-out infinite;animation-delay:1.05s"/>
+            <line x1="18" y1="44" x2="8" y2="44" style="stroke:#0d3a44;animation:krnlPin 1.7s ease-in-out infinite;animation-delay:.5s"/>
+            <line x1="18" y1="60" x2="8" y2="60" style="stroke:#0d3a44;animation:krnlPin 1.7s ease-in-out infinite;animation-delay:.6s"/>
+            <line x1="18" y1="76" x2="8" y2="76" style="stroke:#0d3a44;animation:krnlPin 1.7s ease-in-out infinite;animation-delay:.7s"/>
+            <line x1="102" y1="44" x2="112" y2="44" style="stroke:#0d3a44;animation:krnlPin 1.7s ease-in-out infinite;animation-delay:1.2s"/>
+            <line x1="102" y1="60" x2="112" y2="60" style="stroke:#0d3a44;animation:krnlPin 1.7s ease-in-out infinite;animation-delay:1.3s"/>
+            <line x1="102" y1="76" x2="112" y2="76" style="stroke:#0d3a44;animation:krnlPin 1.7s ease-in-out infinite;animation-delay:1.4s"/>
           </g>
-          <rect x="18" y="18" width="84" height="84" rx="20" stroke="currentColor" stroke-width="3" opacity=".4"/>
-          <g stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity=".75">
+          <rect x="18" y="18" width="84" height="84" rx="20" stroke="#15807a" stroke-width="3"/>
+          <g stroke="#0f5651" stroke-width="3" stroke-linecap="round">
             <line x1="60" y1="60" x2="86" y2="60"/><line x1="60" y1="60" x2="73" y2="37.5"/><line x1="60" y1="60" x2="47" y2="37.5"/>
             <line x1="60" y1="60" x2="34" y2="60"/><line x1="60" y1="60" x2="47" y2="82.5"/><line x1="60" y1="60" x2="73" y2="82.5"/>
           </g>
-          <g fill="currentColor">
-            <circle cx="86" cy="60" r="4.5"/><circle cx="73" cy="37.5" r="4.5"/><circle cx="47" cy="37.5" r="4.5"/>
-            <circle cx="34" cy="60" r="4.5"/><circle cx="47" cy="82.5" r="4.5"/><circle cx="73" cy="82.5" r="4.5"/>
+          <g stroke="#bef9f3" stroke-width="3.4" stroke-linecap="round" pathLength="100" stroke-dasharray="16 84">
+            <line x1="60" y1="60" x2="86" y2="60" style="animation:krnlSpark 1.7s linear infinite;animation-delay:0s"/>
+            <line x1="60" y1="60" x2="73" y2="37.5" style="animation:krnlSpark 1.7s linear infinite;animation-delay:.28s"/>
+            <line x1="60" y1="60" x2="47" y2="37.5" style="animation:krnlSpark 1.7s linear infinite;animation-delay:.57s"/>
+            <line x1="60" y1="60" x2="34" y2="60" style="animation:krnlSpark 1.7s linear infinite;animation-delay:.85s"/>
+            <line x1="60" y1="60" x2="47" y2="82.5" style="animation:krnlSpark 1.7s linear infinite;animation-delay:1.13s"/>
+            <line x1="60" y1="60" x2="73" y2="82.5" style="animation:krnlSpark 1.7s linear infinite;animation-delay:1.42s"/>
           </g>
-          <rect x="49" y="49" width="22" height="22" rx="6" fill="currentColor"/>
+          <circle class="krnlNode" cx="86" cy="60" r="4.5" style="fill:#0f5651;animation:krnlNode 1.7s ease-out infinite;animation-delay:0s"/>
+          <circle class="krnlNode" cx="73" cy="37.5" r="4.5" style="fill:#0f5651;animation:krnlNode 1.7s ease-out infinite;animation-delay:.28s"/>
+          <circle class="krnlNode" cx="47" cy="37.5" r="4.5" style="fill:#0f5651;animation:krnlNode 1.7s ease-out infinite;animation-delay:.57s"/>
+          <circle class="krnlNode" cx="34" cy="60" r="4.5" style="fill:#0f5651;animation:krnlNode 1.7s ease-out infinite;animation-delay:.85s"/>
+          <circle class="krnlNode" cx="47" cy="82.5" r="4.5" style="fill:#0f5651;animation:krnlNode 1.7s ease-out infinite;animation-delay:1.13s"/>
+          <circle class="krnlNode" cx="73" cy="82.5" r="4.5" style="fill:#0f5651;animation:krnlNode 1.7s ease-out infinite;animation-delay:1.42s"/>
+          <circle class="krnlGlow" cx="60" cy="60" r="15" fill="#1fbfb8" style="animation:krnlCore 1.7s ease-in-out infinite;"/>
+          <rect x="49" y="49" width="22" height="22" rx="6" style="animation:krnlCoreDie 1.7s ease-in-out infinite;"/>
         </svg>
         KERNEL
       </div>
