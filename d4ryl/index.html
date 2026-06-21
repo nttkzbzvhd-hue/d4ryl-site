@@ -280,41 +280,61 @@
 
 
 <script>
-  /* ─── DNA Helix Generator ──────────────── */
-  function buildHelix(svgEl, c1, c2, rc) {
+  /* ─── DNA Helix — Animated ─────────────── */
+  (function () {
     const ns = 'http://www.w3.org/2000/svg';
     const top = 18, H = 164, A = 30, cx = 44, n = 15;
-    for (let i = 0; i < n; i++) {
-      const t = i / (n - 1);
-      const y = top + t * H;
-      const ph = t * Math.PI * 3;
-      const dx = A * Math.sin(ph);
-      const depth = (Math.cos(ph) + 1) / 2;
-      const op = 0.18 + 0.6 * (1 - Math.abs(Math.sin(ph)));
-      const line = document.createElementNS(ns, 'line');
-      line.setAttribute('x1', cx + dx); line.setAttribute('y1', y);
-      line.setAttribute('x2', cx - dx); line.setAttribute('y2', y);
-      line.setAttribute('stroke', rc); line.setAttribute('stroke-width', '2.1');
-      line.setAttribute('stroke-linecap', 'round');
-      line.setAttribute('opacity', op.toFixed(3));
-      svgEl.appendChild(line);
-      const cl = document.createElementNS(ns, 'circle');
-      cl.setAttribute('cx', cx + dx); cl.setAttribute('cy', y);
-      cl.setAttribute('r', (2.4 + 1.6 * depth).toFixed(2)); cl.setAttribute('fill', c1);
-      svgEl.appendChild(cl);
-      const cr = document.createElementNS(ns, 'circle');
-      cr.setAttribute('cx', cx - dx); cr.setAttribute('cy', y);
-      cr.setAttribute('r', (2.4 + 1.6 * (1 - depth)).toFixed(2)); cr.setAttribute('fill', c2);
-      svgEl.appendChild(cr);
-    }
-  }
-  document.addEventListener('DOMContentLoaded', () => {
     const C1 = '#8a307f', C2 = '#6883bc', RC = '#8a307f';
-    const nav = document.getElementById('nav-helix');
-    if (nav) buildHelix(nav, C1, C2, RC);
-    const hero = document.getElementById('hero-helix');
-    if (hero) buildHelix(hero, C1, C2, RC);
-  });
+    const speed = 0.6; // rad/s
+
+    function initHelix(svgEl) {
+      const lines = [], lefts = [], rights = [];
+      for (let i = 0; i < n; i++) {
+        const ln = document.createElementNS(ns, 'line');
+        ln.setAttribute('stroke', RC); ln.setAttribute('stroke-width', '2.1');
+        ln.setAttribute('stroke-linecap', 'round');
+        svgEl.appendChild(ln); lines.push(ln);
+        const cl = document.createElementNS(ns, 'circle');
+        cl.setAttribute('fill', C1); svgEl.appendChild(cl); lefts.push(cl);
+        const cr = document.createElementNS(ns, 'circle');
+        cr.setAttribute('fill', C2); svgEl.appendChild(cr); rights.push(cr);
+      }
+      return { lines, lefts, rights };
+    }
+
+    function updateHelix(h, spin) {
+      for (let i = 0; i < n; i++) {
+        const t = i / (n - 1), y = top + t * H;
+        const ph = t * Math.PI * 3 + spin;
+        const dx = A * Math.sin(ph);
+        const depth = (Math.cos(ph) + 1) / 2;
+        const op = 0.18 + 0.6 * (1 - Math.abs(Math.sin(ph)));
+        h.lines[i].setAttribute('x1', cx + dx); h.lines[i].setAttribute('y1', y);
+        h.lines[i].setAttribute('x2', cx - dx); h.lines[i].setAttribute('y2', y);
+        h.lines[i].setAttribute('opacity', op.toFixed(3));
+        h.lefts[i].setAttribute('cx', cx + dx); h.lefts[i].setAttribute('cy', y);
+        h.lefts[i].setAttribute('r', (2.4 + 1.6 * depth).toFixed(2));
+        h.rights[i].setAttribute('cx', cx - dx); h.rights[i].setAttribute('cy', y);
+        h.rights[i].setAttribute('r', (2.4 + 1.6 * (1 - depth)).toFixed(2));
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      const helices = [];
+      ['nav-helix', 'hero-helix'].forEach(function (id) {
+        const el = document.getElementById(id);
+        if (el) helices.push(initHelix(el));
+      });
+      if (!helices.length) return;
+      let phase = 0, last = performance.now();
+      (function loop(now) {
+        phase += (now - last) / 1000 * speed;
+        last = now;
+        helices.forEach(function (h) { updateHelix(h, phase); });
+        requestAnimationFrame(loop);
+      })(last);
+    });
+  })();
 </script>
 
 <script>
