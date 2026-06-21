@@ -3,333 +3,194 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>D4RYL — Trap & Lofi · Hamburg</title>
-  <meta name="description" content="D4RYL — Trap & Lofi from Hamburg. New single out July 24, 2026." />
-
-  <!-- Fonts -->
+  <title>KERNEL — Independent Music Label · Hamburg</title>
+  <meta name="description" content="KERNEL — Independent music label from Hamburg. Trap, Lofi & Electronic." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:        #05080d;
+      --bg-card:   #080d14;
+      --border:    rgba(104,131,188,0.18);
+      --text:      #f1f1ec;
+      --text-muted:#6f6f78;
+      --accent:    #8a307f;
+      --accent-2:  #79a7d3;
+      --mono:      'Space Mono', monospace;
+      --sans:      'Space Grotesk', system-ui, sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: 100%; max-width: 480px; margin: 0 auto; padding: 0 20px; }
 
-  <link rel="stylesheet" href="style.css" />
+    nav {
+      border-bottom: 1px solid var(--border);
+      background: rgba(5,8,13,0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      position: sticky; top: 0; z-index: 100;
+    }
+    nav .wrap { display: flex; align-items: center; height: 52px; }
+    .nav-wordmark {
+      font-family: var(--mono);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+    .nav-wordmark span { color: var(--accent-2); }
 
-  <script>
-    /* ─── All external links here ─── */
-    const LINKS = {
-      spotify:      '#',   /* TODO: Spotify Artist URL */
-      spotifyTrack: '#',   /* TODO: Spotify Track URL (Pre-save / Stream) */
-      appleMusic:   '#',   /* TODO: Apple Music URL */
-      youtube:      '#',   /* TODO: YouTube Channel */
-      instagram:    '#',   /* TODO: Instagram Profile */
-      tiktok:       '#',   /* TODO: TikTok Profile */
-      presave:      '#',   /* TODO: Pre-save link (DistroKid / Feature.fm) */
-      /* Shop links (Phase 2) */
-      shopBeats:    '#',   /* TODO: Gumroad / Bandcamp Beats */
-      shopPacks:    '#',   /* TODO: Sample Packs */
-      shopExcl:     '#',   /* TODO: Exclusive Tracks (Telegram) */
-    };
-  </script>
+    .hero {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      padding: 96px 0 80px;
+      border-bottom: 1px solid var(--border);
+      background: radial-gradient(58% 50% at 50% 40%, rgba(138,48,127,0.09), transparent 72%);
+    }
+    .hero .wrap { text-align: center; }
+    .hero-label {
+      display: block;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+    }
+    .hero-name {
+      font-family: var(--mono);
+      font-size: clamp(36px, 10vw, 52px);
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+    .hero-name span { color: var(--accent-2); }
+    .hero-tagline {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.28em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+
+    .artists { padding: 72px 0; border-bottom: 1px solid var(--border); }
+    .section-label {
+      display: block;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 36px;
+    }
+    .artist-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .artist-card:hover {
+      border-color: var(--accent-2);
+      background: rgba(121,167,211,0.05);
+    }
+    .artist-info { display: flex; flex-direction: column; gap: 4px; }
+    .artist-name { font-size: 1.25rem; font-weight: 700; letter-spacing: -0.02em; }
+    .artist-genre {
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .artist-arrow { font-size: 18px; opacity: 0.3; transition: opacity 0.2s, color 0.2s; }
+    .artist-card:hover .artist-arrow { opacity: 1; color: var(--accent-2); }
+
+    footer { padding: 40px 0; border-top: 1px solid var(--border); }
+    .footer-logo {
+      font-family: var(--mono);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      margin-bottom: 8px;
+    }
+    .footer-logo span { color: var(--accent-2); }
+    .footer-meta {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+    .footer-meta a { color: var(--text-muted); transition: color 0.2s; }
+    .footer-meta a:hover { color: var(--accent-2); }
+  </style>
 </head>
 <body>
 
-<!-- ══════════════════════════════════════════
-     1. NAV
-════════════════════════════════════════════ -->
-<nav id="nav">
+<nav>
   <div class="wrap">
-    <a href="#" class="nav-logo">
-      <svg class="nav-helix" id="nav-helix" width="18" height="40" viewBox="0 0 88 200"></svg>
-      <span class="nav-wordmark">D<span class="accent-4">4</span>RYL</span>
-    </a>
-    <ul class="nav-links">
-      <li><a href="#musik">Music</a></li>
-      <li><a href="#shop">Shop</a></li>
-      <li><a href="#links">Links</a></li>
-    </ul>
+    <span class="nav-wordmark">KER<span>N</span>EL</span>
   </div>
 </nav>
 
-
-<!-- ══════════════════════════════════════════
-     2. HERO
-════════════════════════════════════════════ -->
-<section id="hero">
-  <div class="wrap text-center">
-
-    <div class="hero-lockup">
-      <svg class="hero-helix" id="hero-helix" width="70" height="160" viewBox="0 0 88 200"></svg>
-      <div class="hero-wordmark-text">D<span class="accent-4">4</span>RYL</div>
-    </div>
-
-    <p class="hero-tagline">Trap &amp; Lofi &nbsp;·&nbsp; Hamburg</p>
-
-    <div class="hero-cta">
-      <a href="#musik" class="btn btn-primary">Listen Now</a>
-    </div>
-
+<section class="hero">
+  <div class="wrap">
+    <span class="hero-label">// independent music label</span>
+    <h1 class="hero-name">KER<span>N</span>EL</h1>
+    <p class="hero-tagline">Trap &nbsp;·&nbsp; Lofi &nbsp;·&nbsp; Hamburg</p>
   </div>
 </section>
 
-
-<!-- ══════════════════════════════════════════
-     3. NEW SINGLE
-════════════════════════════════════════════ -->
-<section id="single">
+<section class="artists">
   <div class="wrap">
-    <div class="section-header">
-      <span class="label">// new single</span>
-      <h2>Out Now</h2>
-    </div>
-
-    <div class="single-card">
-
-      <!-- Cover — replace assets/cover.jpg with the real artwork -->
-      <div class="single-cover">
-        <img src="assets/cover-adollar.jpg" alt="D4RYL – ADollar?! Cover" />
-        <div class="single-date-tag">out July 24, 2026</div>
+    <span class="section-label">// artists</span>
+    <h2 class="section-title">Roster</h2>
+    <a href="/d4ryl" class="artist-card">
+      <div class="artist-info">
+        <span class="artist-name">D4RYL</span>
+        <span class="artist-genre">DNA · Trap</span>
       </div>
-
-      <div class="single-info">
-        <h3 class="single-title">ADollar?!</h3>
-        <p class="single-artist">D4RYL</p>
-        <div class="single-actions">
-          <a href="javascript:void(0)" onclick="window.open(LINKS.presave,'_blank')" class="btn btn-primary">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
-            Pre-save
-          </a>
-          <a href="javascript:void(0)" onclick="window.open(LINKS.spotifyTrack,'_blank')" class="btn btn-outline">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
-            Spotify
-          </a>
-        </div>
-      </div>
-    </div>
-
+      <span class="artist-arrow">→</span>
+    </a>
   </div>
 </section>
 
-
-<!-- ══════════════════════════════════════════
-     4. MUSIC / PLAYER
-════════════════════════════════════════════ -->
-<section id="musik">
+<footer>
   <div class="wrap">
-    <div class="section-header">
-      <span class="label">// music</span>
-      <h2>Tracks</h2>
-    </div>
-
-    <!-- TODO: Add Spotify iframe embed when track is live -->
-    <!-- Example:
-    <iframe style="border-radius:4px"
-      src="https://open.spotify.com/embed/track/TRACK_ID?utm_source=generator&theme=0"
-      width="100%" height="152" frameborder="0"
-      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-      loading="lazy"></iframe>
-    -->
-
-    <div class="player-placeholder">
-      <span class="label">// spotify player</span>
-      <p class="mt-2">Embed available after release on July 24, 2026.</p>
-    </div>
-
-  </div>
-</section>
-
-
-<!-- ══════════════════════════════════════════
-     5. SHOP (Phase 2 — Coming Soon)
-════════════════════════════════════════════ -->
-<section id="shop">
-  <div class="wrap">
-    <div class="section-header">
-      <span class="label">// shop</span>
-      <h2>Beats &amp; Packs</h2>
-    </div>
-
-    <div class="shop-coming-soon">
-      <span class="label">// coming soon</span>
-      <p>Beats, sample packs and exclusive tracks — available soon.</p>
-      <a href="#newsletter" class="btn btn-outline">Get notified</a>
-    </div>
-
-    <!--
-    PHASE 2 — Product cards (commented out, activate when shop goes live)
-
-    <div class="links-grid">
-      <a href="javascript:void(0)" onclick="window.open(LINKS.shopBeats,'_blank')" class="link-btn">
-        <span>Beats</span>
-        <span style="margin-left:auto;font-family:var(--mono);font-size:10px;color:var(--text-muted)">from 29 €</span>
-        <span class="link-btn-arrow">→</span>
-      </a>
-      <a href="javascript:void(0)" onclick="window.open(LINKS.shopPacks,'_blank')" class="link-btn">
-        <span>Sample Packs</span>
-        <span style="margin-left:auto;font-family:var(--mono);font-size:10px;color:var(--text-muted)">from 12 €</span>
-        <span class="link-btn-arrow">→</span>
-      </a>
-      <a href="javascript:void(0)" onclick="window.open(LINKS.shopExcl,'_blank')" class="link-btn">
-        <span>Exclusive Tracks</span>
-        <span style="margin-left:auto;font-family:var(--mono);font-size:10px;color:var(--text-muted)">Telegram</span>
-        <span class="link-btn-arrow">→</span>
-      </a>
-    </div>
-    -->
-
-  </div>
-</section>
-
-
-<!-- ══════════════════════════════════════════
-     6. LINKS
-════════════════════════════════════════════ -->
-<section id="links">
-  <div class="wrap">
-    <div class="section-header">
-      <span class="label">// listen everywhere</span>
-      <h2>Links</h2>
-    </div>
-
-    <div class="links-grid">
-
-      <a href="javascript:void(0)" onclick="window.open(LINKS.spotify,'_blank')" class="link-btn">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
-        Spotify
-        <span class="link-btn-arrow">→</span>
-      </a>
-
-      <a href="javascript:void(0)" onclick="window.open(LINKS.appleMusic,'_blank')" class="link-btn">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.994 6.124a9.23 9.23 0 00-.24-2.19c-.317-1.31-1.062-2.31-2.18-3.043a5.022 5.022 0 00-1.877-.726 10.496 10.496 0 00-1.564-.15c-.04-.003-.083-.01-.124-.013H5.986c-.152.01-.303.017-.455.026C4.786.07 4.043.15 3.34.428 2.004.958 1.04 1.88.475 3.208a4.92 4.92 0 00-.35 1.466c-.06.557-.077 1.117-.09 1.677-.013.596-.01 1.195-.01 1.794V15.85c0 .6-.003 1.198.01 1.795.013.56.03 1.12.09 1.677a4.92 4.92 0 00.35 1.466c.565 1.328 1.53 2.25 2.865 2.78.703.278 1.446.358 2.191.41.152.01.303.016.455.026H18.01c.04-.003.082-.008.123-.013a10.496 10.496 0 001.565-.15 5.022 5.022 0 001.877-.726c1.118-.734 1.863-1.734 2.18-3.043a9.23 9.23 0 00.24-2.19c.012-.468.016-.938.016-1.407V7.53c0-.469-.004-.939-.017-1.406zm-7.35 9.876a.75.75 0 01-.75.75H8.106a.75.75 0 010-1.5h7.788a.75.75 0 01.75.75zm0-3a.75.75 0 01-.75.75H8.106a.75.75 0 010-1.5h7.788a.75.75 0 01.75.75zm0-3a.75.75 0 01-.75.75H8.106a.75.75 0 010-1.5h7.788a.75.75 0 01.75.75z"/></svg>
-        Apple Music
-        <span class="link-btn-arrow">→</span>
-      </a>
-
-      <a href="javascript:void(0)" onclick="window.open(LINKS.youtube,'_blank')" class="link-btn">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.495 6.205a3.007 3.007 0 00-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 00.527 6.205a31.247 31.247 0 00-.522 5.805 31.247 31.247 0 00.522 5.783 3.007 3.007 0 002.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 002.088-2.088 31.247 31.247 0 00.5-5.783 31.247 31.247 0 00-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
-        YouTube
-        <span class="link-btn-arrow">→</span>
-      </a>
-
-      <a href="javascript:void(0)" onclick="window.open(LINKS.instagram,'_blank')" class="link-btn">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-        Instagram
-        <span class="link-btn-arrow">→</span>
-      </a>
-
-      <a href="javascript:void(0)" onclick="window.open(LINKS.tiktok,'_blank')" class="link-btn">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.77 1.52v-3.4a4.85 4.85 0 01-1-.12z"/></svg>
-        TikTok
-        <span class="link-btn-arrow">→</span>
-      </a>
-
-    </div>
-  </div>
-</section>
-
-
-<!-- ══════════════════════════════════════════
-     7. NEWSLETTER
-════════════════════════════════════════════ -->
-<section id="newsletter">
-  <div class="wrap">
-    <div class="section-header">
-      <span class="label">// newsletter</span>
-      <h2>Stay in the Loop</h2>
-    </div>
-
-    <div class="newsletter-card">
-      <h3>New Tracks, Releases &amp; Drops</h3>
-      <p>No spam. Just the essentials — straight when it happens.</p>
-
-      <!-- BREVO FORM EMBED HERE -->
-      <!-- Replace the fallback form below with the real Brevo embed code -->
-
-      <!-- Fallback form (until Brevo embed is active) -->
-      <form class="newsletter-form" onsubmit="handleNewsletterSubmit(event)">
-        <input
-          type="email"
-          name="email"
-          placeholder="your@email.com"
-          required
-          autocomplete="email"
-          aria-label="Email address"
-        />
-        <button type="submit" class="btn btn-primary">Subscribe</button>
-      </form>
-
-    </div>
-  </div>
-</section>
-
-
-<!-- ══════════════════════════════════════════
-     8. FOOTER
-════════════════════════════════════════════ -->
-<footer id="footer">
-  <div class="wrap">
-    <div class="footer-inner">
-      <div class="footer-logo">KER<span>N</span>EL</div>
-      <div class="footer-meta">
-        ℗ 2026 Kernel &nbsp;·&nbsp; kernelrec.com<br/>
-        <a href="mailto:hello@kernelrec.com">hello@kernelrec.com</a> &nbsp;·&nbsp;
-        <a href="mailto:sync@kernelrec.com">sync@kernelrec.com</a> &nbsp;·&nbsp;
-        <a href="mailto:press@kernelrec.com">press@kernelrec.com</a>
-      </div>
+    <div class="footer-logo">KER<span>N</span>EL</div>
+    <div class="footer-meta">
+      ℗ 2026 Kernel &nbsp;·&nbsp; kernelrec.com<br/>
+      <a href="mailto:hello@kernelrec.com">hello@kernelrec.com</a> &nbsp;·&nbsp;
+      <a href="mailto:sync@kernelrec.com">sync@kernelrec.com</a> &nbsp;·&nbsp;
+      <a href="mailto:press@kernelrec.com">press@kernelrec.com</a>
     </div>
   </div>
 </footer>
-
-
-<script>
-  /* ─── DNA Helix Generator ──────────────── */
-  function buildHelix(svgEl, c1, c2, rc) {
-    const ns = 'http://www.w3.org/2000/svg';
-    const top = 18, H = 164, A = 30, cx = 44, n = 15;
-    for (let i = 0; i < n; i++) {
-      const t = i / (n - 1);
-      const y = top + t * H;
-      const ph = t * Math.PI * 3;
-      const dx = A * Math.sin(ph);
-      const depth = (Math.cos(ph) + 1) / 2;
-      const op = 0.18 + 0.6 * (1 - Math.abs(Math.sin(ph)));
-      const line = document.createElementNS(ns, 'line');
-      line.setAttribute('x1', cx + dx); line.setAttribute('y1', y);
-      line.setAttribute('x2', cx - dx); line.setAttribute('y2', y);
-      line.setAttribute('stroke', rc); line.setAttribute('stroke-width', '2.1');
-      line.setAttribute('stroke-linecap', 'round');
-      line.setAttribute('opacity', op.toFixed(3));
-      svgEl.appendChild(line);
-      const cl = document.createElementNS(ns, 'circle');
-      cl.setAttribute('cx', cx + dx); cl.setAttribute('cy', y);
-      cl.setAttribute('r', (2.4 + 1.6 * depth).toFixed(2)); cl.setAttribute('fill', c1);
-      svgEl.appendChild(cl);
-      const cr = document.createElementNS(ns, 'circle');
-      cr.setAttribute('cx', cx - dx); cr.setAttribute('cy', y);
-      cr.setAttribute('r', (2.4 + 1.6 * (1 - depth)).toFixed(2)); cr.setAttribute('fill', c2);
-      svgEl.appendChild(cr);
-    }
-  }
-  document.addEventListener('DOMContentLoaded', () => {
-    const C1 = '#8a307f', C2 = '#6883bc', RC = '#8a307f';
-    const nav = document.getElementById('nav-helix');
-    if (nav) buildHelix(nav, C1, C2, RC);
-    const hero = document.getElementById('hero-helix');
-    if (hero) buildHelix(hero, C1, C2, RC);
-  });
-</script>
-
-<script>
-  /* ─── Newsletter Fallback ─────────────────
-     Replace once Brevo embed is active       */
-  function handleNewsletterSubmit(e) {
-    e.preventDefault();
-    const email = e.target.email.value;
-    const btn = e.target.querySelector('button');
-    btn.textContent = '✓ Subscribed';
-    btn.disabled = true;
-    /* TODO: add real Brevo API call or form action */
-    console.log('Newsletter signup:', email);
-  }
-</script>
 
 </body>
 </html>
