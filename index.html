@@ -3,201 +3,347 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>KERNEL — Independent Music Label · Hamburg</title>
-  <meta name="description" content="KERNEL — Independent music label from Hamburg. Trap, Lofi & Electronic." />
+  <title>KERNEL — Independent Record Company</title>
+  <meta name="description" content="KERNEL — An independent label operating across the spectrum. Signal over noise." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
-    :root {
-      --bg:        #05080d;
-      --bg-card:   #080d14;
-      --border:    rgba(104,131,188,0.18);
-      --text:      #f1f1ec;
-      --text-muted:#6f6f78;
-      --accent:    #8a307f;
-      --accent-2:  #79a7d3;
-      --mono:      'Space Mono', monospace;
-      --sans:      'Space Grotesk', system-ui, sans-serif;
-    }
+    @keyframes krnlScan  { 0% { top: -2%; } 100% { top: 102%; } }
+    @keyframes krnlBlink { 0%, 100% { opacity: 1; } 50% { opacity: .25; } }
+
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    html, body { min-height: 100vh; }
     body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: var(--sans);
-      font-size: 16px;
-      line-height: 1.6;
-      min-height: 100vh;
+      background: #0a0d14;
+      background-image: radial-gradient(circle at 50% 0%, rgba(25,120,165,.14), transparent 60%);
       display: flex;
-      flex-direction: column;
-      -webkit-font-smoothing: antialiased;
+      justify-content: center;
+      padding: 46px 24px 80px;
+      font-family: 'IBM Plex Sans', sans-serif;
     }
     a { color: inherit; text-decoration: none; }
-    .wrap { width: 100%; max-width: 480px; margin: 0 auto; padding: 0 20px; }
 
-    nav {
-      border-bottom: 1px solid var(--border);
-      background: rgba(5,8,13,0.92);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      position: sticky; top: 0; z-index: 100;
-    }
-    nav .wrap { display: flex; align-items: center; height: 52px; }
-    .nav-wordmark {
-      font-family: var(--mono);
-      font-size: 14px;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-    }
-    .nav-wordmark span { color: var(--accent-2); }
+    #app { width: 100%; max-width: 412px; }
 
-    .hero {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      padding: 96px 0 80px;
-      border-bottom: 1px solid var(--border);
-      background: radial-gradient(58% 50% at 50% 40%, rgba(138,48,127,0.09), transparent 72%);
-    }
-    .hero .wrap { text-align: center; }
-    .hero-label {
-      display: block;
-      font-family: var(--mono);
-      font-size: 10px;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 24px;
-    }
-    .hero-name {
-      font-family: var(--mono);
-      font-size: clamp(36px, 10vw, 52px);
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      line-height: 1;
-      margin-bottom: 16px;
-    }
-    .hero-name span { color: var(--accent-2); }
-    .hero-tagline {
-      font-family: var(--mono);
-      font-size: 10px;
-      letter-spacing: 0.28em;
-      color: var(--text-muted);
-      text-transform: uppercase;
+    .card {
+      width: 100%;
+      background: #05080e;
+      border-radius: 40px;
+      overflow: hidden;
+      border: 1px solid rgba(31,191,184,.16);
+      box-shadow: 0 40px 90px -30px rgba(3,17,99,.85), 0 0 0 1px rgba(255,255,255,.02) inset;
+      color: #c2ccd6;
+      position: relative;
     }
 
-    .artists { padding: 72px 0; border-bottom: 1px solid var(--border); }
-    .section-label {
-      display: block;
-      font-family: var(--mono);
-      font-size: 10px;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 10px;
-    }
-    .section-title {
-      font-size: 1.5rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      margin-bottom: 36px;
-    }
-    .artist-card {
+    /* ── Status bar ──────────────────── */
+    .status-bar {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 20px;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      transition: border-color 0.2s, background 0.2s;
+      padding: 16px 20px;
+      border-bottom: 1px solid rgba(31,191,184,.12);
+      font: 500 9px/1 'IBM Plex Mono', monospace;
+      letter-spacing: .16em;
+      color: #1fbfb8;
     }
-    .artist-card:hover {
-      border-color: var(--accent-2);
-      background: rgba(121,167,211,0.05);
+    .status-dot {
+      width: 8px; height: 8px; border-radius: 2px;
+      background: #1fbfb8; display: inline-block;
+      animation: krnlBlink 2.4s ease-in-out infinite;
     }
-    .artist-info { display: flex; flex-direction: column; gap: 4px; }
-    .artist-name { font-size: 1.25rem; font-weight: 700; letter-spacing: -0.02em; }
-    .artist-genre {
-      font-family: var(--mono);
-      font-size: 9px;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--text-muted);
+    .nav-link {
+      color: #4d6b78;
+      transition: color .2s;
+      cursor: pointer;
     }
-    .artist-arrow { font-size: 18px; opacity: 0.3; transition: opacity 0.2s, color 0.2s; }
-    .artist-card:hover .artist-arrow { opacity: 1; color: var(--accent-2); }
+    .nav-link:hover { color: #1fbfb8; }
 
-    footer { padding: 40px 0; border-top: 1px solid var(--border); }
-    .footer-logo {
-      font-family: var(--mono);
-      font-size: 0.85rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      margin-bottom: 8px;
+    /* ── Hero ────────────────────────── */
+    .hero {
+      position: relative;
+      padding: 30px 20px 24px;
+      background-image:
+        linear-gradient(rgba(31,191,184,.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(31,191,184,.05) 1px, transparent 1px);
+      background-size: 26px 26px;
+      overflow: hidden;
     }
-    .footer-logo span { color: var(--accent-2); }
-    .footer-meta {
-      font-family: var(--mono);
-      font-size: 10px;
-      letter-spacing: 0.08em;
-      color: var(--text-muted);
-      line-height: 1.8;
+    .scanline {
+      position: absolute; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, #1fbfb8, transparent);
+      opacity: .5;
+      animation: krnlScan 3.4s linear infinite;
     }
-    .footer-meta a { color: var(--text-muted); transition: color 0.2s; }
-    .footer-meta a:hover { color: var(--accent-2); }
+
+    /* ── Shared ──────────────────────── */
+    .section-label {
+      display: flex;
+      justify-content: space-between;
+      font: 600 9px/1 'IBM Plex Mono', monospace;
+      letter-spacing: .2em;
+      color: #5a7884;
+      margin-bottom: 14px;
+    }
+
+    /* ── Freq bars ───────────────────── */
+    .freq-bars {
+      display: flex;
+      align-items: flex-end;
+      gap: 2px;
+      height: 112px;
+    }
+
+    /* ── Roster tags ─────────────────── */
+    .roster-tag {
+      display: inline-block;
+      font: 500 10px/1 'IBM Plex Mono', monospace;
+      color: #9fb0bb;
+      border: 1px solid rgba(31,191,184,.2);
+      border-radius: 14px;
+      padding: 8px 12px;
+      transition: border-color .2s, color .2s;
+    }
+    .roster-tag:hover { border-color: #1fbfb8; color: #1fbfb8; }
+
+    /* ── Buttons ─────────────────────── */
+    .play-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #1fbfb8;
+      color: #05080e;
+      border: none;
+      border-radius: 22px;
+      padding: 10px 18px;
+      font: 600 10px/1 'IBM Plex Mono', monospace;
+      letter-spacing: .1em;
+      cursor: pointer;
+      transition: background .2s;
+      white-space: nowrap;
+    }
+    .play-btn:hover { background: #26d6ce; }
+
+    /* ── Newsletter ──────────────────── */
+    .email-input {
+      flex: 1;
+      border: 1px solid rgba(31,191,184,.25);
+      border-radius: 9px;
+      padding: 13px;
+      font: 400 11px/1 'IBM Plex Mono', monospace;
+      color: #4d6b78;
+      background: transparent;
+      outline: none;
+      transition: border-color .2s, color .2s;
+    }
+    .email-input:focus { border-color: #1fbfb8; color: #c2ccd6; }
+    .email-input::placeholder { color: #3c5663; }
+    .send-btn {
+      background: #1fbfb8;
+      color: #05080e;
+      border: none;
+      border-radius: 9px;
+      padding: 0 20px;
+      font: 600 14px/1 'IBM Plex Mono', monospace;
+      height: 46px;
+      cursor: pointer;
+      transition: background .2s;
+    }
+    .send-btn:hover { background: #26d6ce; }
+
+    /* ── Catalog rows ────────────────── */
+    .catalog-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 0;
+      border-top: 1px solid rgba(31,191,184,.10);
+      transition: opacity .2s;
+    }
+    .catalog-row:hover { opacity: .72; }
   </style>
 </head>
 <body>
+<div id="app">
+  <div class="card">
 
-<nav>
-  <div class="wrap">
-    <span class="nav-wordmark">KER<span>N</span>EL</span>
-  </div>
-</nav>
-
-<section class="hero">
-  <div class="wrap">
-    <span class="hero-label">// independent music label</span>
-    <h1 class="hero-name">KER<span>N</span>EL</h1>
-    <p class="hero-tagline">Trap &nbsp;·&nbsp; Lofi &nbsp;·&nbsp; Hamburg</p>
-  </div>
-</section>
-
-<section class="artists">
-  <div class="wrap">
-    <span class="section-label">// artists</span>
-    <h2 class="section-title">Roster</h2>
-    <a href="/d4ryl" class="artist-card">
-      <div class="artist-info">
-        <span class="artist-name">D4RYL</span>
-        <span class="artist-genre">DNA · Trap</span>
-      </div>
-      <span class="artist-arrow">→</span>
-    </a>
-    <a href="/halbschlaf" class="artist-card">
-      <div class="artist-info">
-        <span class="artist-name">HalbSchlaf</span>
-        <span class="artist-genre">Lo-Fi · Hip-Hop</span>
-      </div>
-      <span class="artist-arrow">→</span>
-    </a>
-  </div>
-</section>
-
-<footer>
-  <div class="wrap">
-    <div class="footer-logo">KER<span>N</span>EL</div>
-    <div class="footer-meta">
-      ℗ 2026 Kernel &nbsp;·&nbsp; kernelrec.com<br/>
-      <a href="mailto:hello@kernelrec.com">hello@kernelrec.com</a> &nbsp;·&nbsp;
-      <a href="mailto:sync@kernelrec.com">sync@kernelrec.com</a> &nbsp;·&nbsp;
-      <a href="mailto:press@kernelrec.com">press@kernelrec.com</a>
+    <!-- STATUS BAR -->
+    <div class="status-bar">
+      <span style="display:flex;align-items:center;gap:8px">
+        <span class="status-dot"></span>KERNEL
+      </span>
+      <span style="display:flex;gap:14px">
+        <a href="#catalog" class="nav-link">RELEASES</a>
+        <a href="#roster" class="nav-link">ROSTER</a>
+        <span style="color:#1978a5">≡</span>
+      </span>
     </div>
-  </div>
-</footer>
 
+    <!-- HERO -->
+    <div class="hero">
+      <div class="scanline"></div>
+      <div style="font:600 9px/1 'IBM Plex Mono',monospace;letter-spacing:.28em;color:#1978a5">RECORD COMPANY — CROSS-GENRE</div>
+      <h1 style="font:600 66px/0.88 'IBM Plex Sans',sans-serif;letter-spacing:-3.5px;color:#eef4f6;margin:16px 0 0">KERNEL</h1>
+      <div style="font:400 12px/1.55 'IBM Plex Mono',monospace;color:#6f8893;margin-top:14px;max-width:320px">An independent label operating across the spectrum. Signal over noise.</div>
+
+      <!-- Frequency analysis -->
+      <div style="margin-top:22px;border:1px solid rgba(31,191,184,.18);border-radius:12px;background:rgba(3,17,99,.18);padding:14px 14px 11px">
+        <div style="display:flex;justify-content:space-between;font:500 8px/1 'IBM Plex Mono',monospace;letter-spacing:.14em;color:#4d6b78;margin-bottom:10px">
+          <span style="color:#1fbfb8">FREQUENCY ANALYSIS</span><span>FFT · 56</span>
+        </div>
+        <div class="freq-bars" id="freq-bars"></div>
+        <div style="display:flex;justify-content:space-between;font:500 7px/1 'IBM Plex Mono',monospace;color:#3c5663;margin-top:9px">
+          <span>20Hz</span><span>200</span><span>1k</span><span>5k</span><span>20kHz</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- LATEST RELEASE -->
+    <div style="padding:24px 20px 8px">
+      <div style="font:600 9px/1 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#5a7884;margin-bottom:16px">▌ LATEST RELEASE</div>
+      <div style="display:flex;justify-content:space-between;align-items:baseline">
+        <div>
+          <div style="font:600 21px/1.1 'IBM Plex Sans',sans-serif;color:#eef4f6">ADollar?!</div>
+          <div style="font:400 11px/1 'IBM Plex Mono',monospace;color:#6f8893;margin-top:6px">D4RYL</div>
+        </div>
+        <div style="font:500 9px/1 'IBM Plex Mono',monospace;color:#1fbfb8">KRNL001</div>
+      </div>
+      <div id="feat-wave" style="display:flex;align-items:center;gap:2px;height:50px;margin:16px 0;overflow:hidden"></div>
+      <div style="display:flex;align-items:center;justify-content:space-between">
+        <div style="display:flex;gap:14px;font:500 9px/1 'IBM Plex Mono',monospace;color:#6f8893">
+          <span>TRAP</span><span>DIGITAL</span><span>JUL 2026</span>
+        </div>
+        <a href="/d4ryl" class="play-btn">▶ LISTEN</a>
+      </div>
+    </div>
+
+    <!-- CATALOG -->
+    <div id="catalog" style="padding:26px 20px 8px">
+      <div class="section-label">
+        <span>CATALOG</span><span style="color:#3c5663">02 ENTRIES ↘</span>
+      </div>
+      <div id="catalog-list"></div>
+    </div>
+
+    <!-- MANIFEST -->
+    <div style="margin-top:14px;padding:26px 20px;border-top:1px solid rgba(31,191,184,.12);background-image:linear-gradient(rgba(31,191,184,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(31,191,184,.04) 1px,transparent 1px);background-size:26px 26px">
+      <div style="font:600 9px/1 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#5a7884;margin-bottom:14px">// MANIFEST</div>
+      <div style="font:400 14px/1.6 'IBM Plex Sans',sans-serif;color:#aebcc6">No genres, only signals. KERNEL presses, distributes and amplifies sound that resists category — measured, not labelled.</div>
+      <div style="display:flex;margin-top:22px;border:1px solid rgba(31,191,184,.14);border-radius:10px;overflow:hidden">
+        <div style="flex:1;padding:14px 0;text-align:center;border-right:1px solid rgba(31,191,184,.12)">
+          <div style="font:600 18px/1 'IBM Plex Sans',sans-serif;color:#1fbfb8">01</div>
+          <div style="font:500 7px/1 'IBM Plex Mono',monospace;color:#4d6b78;letter-spacing:.14em;margin-top:6px">RELEASES</div>
+        </div>
+        <div style="flex:1;padding:14px 0;text-align:center;border-right:1px solid rgba(31,191,184,.12)">
+          <div style="font:600 18px/1 'IBM Plex Sans',sans-serif;color:#1fbfb8">02</div>
+          <div style="font:500 7px/1 'IBM Plex Mono',monospace;color:#4d6b78;letter-spacing:.14em;margin-top:6px">ARTISTS</div>
+        </div>
+        <div style="flex:1;padding:14px 0;text-align:center">
+          <div style="font:600 18px/1 'IBM Plex Sans',sans-serif;color:#1fbfb8">2026</div>
+          <div style="font:500 7px/1 'IBM Plex Mono',monospace;color:#4d6b78;letter-spacing:.14em;margin-top:6px">EST.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ROSTER -->
+    <div id="roster" style="padding:26px 20px 20px">
+      <div class="section-label"><span>ROSTER · 02</span></div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px">
+        <a href="/d4ryl" class="roster-tag">D4RYL</a>
+        <a href="/halbschlaf" class="roster-tag">HalbSchlaf</a>
+      </div>
+    </div>
+
+    <!-- SUBSCRIBE -->
+    <div style="margin-top:4px;padding:26px 20px 30px;border-top:1px solid rgba(31,191,184,.12);background:rgba(3,17,99,.24)">
+      <div style="font:600 15px/1.2 'IBM Plex Sans',sans-serif;color:#eef4f6">Receive transmissions</div>
+      <div style="font:400 10px/1.4 'IBM Plex Mono',monospace;color:#6f8893;margin-top:7px">New signals, test pressings, dates.</div>
+      <form id="sub-form" style="display:flex;gap:8px;margin-top:16px">
+        <input type="email" class="email-input" placeholder="name@domain" required autocomplete="email" />
+        <button type="submit" class="send-btn">→</button>
+      </form>
+      <div style="display:flex;justify-content:space-between;font:500 8px/1 'IBM Plex Mono',monospace;color:#3c5663;margin-top:20px;letter-spacing:.1em">
+        <span>KERNEL © 2026</span><span>53.55°N 10.00°E</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  /* ── Seeded RNG ───────────────────── */
+  function rng(seed) {
+    let s = seed >>> 0;
+    return () => { s = (Math.imul(s, 1103515245) + 12345) >>> 0; return s / 4294967296; };
+  }
+
+  /* ── Frequency bars ──────────────── */
+  const grad = 'linear-gradient(180deg,#1fbfb8 0%,#05716c 100%)';
+  const r1 = rng(7);
+  const freqEl = document.getElementById('freq-bars');
+  for (let i = 0; i < 56; i++) {
+    const d = document.createElement('div');
+    d.style.cssText = `flex:1 1 0;height:${14 + Math.round(r1() * 82)}%;background:${grad};border-radius:1.5px 1.5px 0 0`;
+    freqEl.appendChild(d);
+  }
+
+  /* ── Featured waveform ───────────── */
+  const r2 = rng(23);
+  const waveEl = document.getElementById('feat-wave');
+  for (let i = 0; i < 80; i++) {
+    const d = document.createElement('div');
+    d.style.cssText = `width:3px;height:${8 + Math.round(r2() * 90)}%;background:#1fbfb8;border-radius:2px;flex:0 0 auto`;
+    waveEl.appendChild(d);
+  }
+
+  /* ── Mini waveform ───────────────── */
+  function miniWave(seed) {
+    const r = rng(seed);
+    const el = document.createElement('div');
+    el.style.cssText = 'display:flex;align-items:flex-end;gap:1px;height:22px;width:66px;flex-shrink:0';
+    for (let i = 0; i < 24; i++) {
+      const b = document.createElement('div');
+      b.style.cssText = `flex:1 1 0;height:${22 + Math.round(r() * 78)}%;background:#1978a5;border-radius:1px`;
+      el.appendChild(b);
+    }
+    return el;
+  }
+
+  /* ── Catalog ─────────────────────── */
+  const catalog = [
+    { cat: 'KRNL001', title: 'ADollar?!', artist: 'D4RYL',      tag: 'TRAP',  href: '/d4ryl',      seed: 101 },
+    { cat: 'KRNL002', title: '— —',       artist: 'HalbSchlaf', tag: 'LO-FI', href: '/halbschlaf', seed: 202 },
+  ];
+  const listEl = document.getElementById('catalog-list');
+  catalog.forEach(r => {
+    const row = document.createElement('a');
+    row.href = r.href;
+    row.className = 'catalog-row';
+    const info = document.createElement('div');
+    info.style.cssText = 'flex:1;min-width:0';
+    info.innerHTML = `
+      <div style="display:flex;align-items:baseline;gap:8px">
+        <span style="font:500 8px/1 'IBM Plex Mono',monospace;color:#1978a5">${r.cat}</span>
+        <span style="font:600 14px/1.1 'IBM Plex Sans',sans-serif;color:#dbe4ea">${r.title}</span>
+      </div>
+      <div style="font:400 10px/1 'IBM Plex Mono',monospace;color:#6f8893;margin-top:6px">${r.artist}</div>`;
+    const tag = document.createElement('div');
+    tag.style.cssText = "font:500 9px/1 'IBM Plex Mono',monospace;color:#4d6b78;width:36px;text-align:right;flex-shrink:0";
+    tag.textContent = r.tag;
+    row.appendChild(info);
+    row.appendChild(miniWave(r.seed));
+    row.appendChild(tag);
+    listEl.appendChild(row);
+  });
+
+  /* ── Newsletter ──────────────────── */
+  document.getElementById('sub-form').addEventListener('submit', e => {
+    e.preventDefault();
+    const btn = e.target.querySelector('button');
+    btn.textContent = '✓';
+    btn.style.background = '#0a6b65';
+    setTimeout(() => { btn.textContent = '→'; btn.style.background = '#1fbfb8'; }, 3000);
+  });
+</script>
 </body>
 </html>
