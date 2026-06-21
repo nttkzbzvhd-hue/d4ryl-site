@@ -95,11 +95,12 @@
       height: 52px;
     }
     .nav-logo { display: flex; align-items: center; gap: 10px; }
-    .status-dot {
-      width: 7px; height: 7px; border-radius: 2px;
-      background: var(--accent);
-      animation: krnlBlink 2.4s ease-in-out infinite;
+    .kernel-mark {
+      display: block;
+      color: var(--accent);
       flex-shrink: 0;
+      animation: krnlBlink 3.2s ease-in-out infinite;
+      filter: drop-shadow(0 0 4px rgba(31,191,184,0.4));
     }
     .nav-wordmark {
       font-family: var(--mono);
@@ -428,7 +429,24 @@
 <nav id="nav">
   <div class="wrap">
     <a href="#" class="nav-logo">
-      <span class="status-dot"></span>
+      <svg class="kernel-mark" width="28" height="28" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity=".4">
+          <line x1="44" y1="18" x2="44" y2="8"/><line x1="60" y1="18" x2="60" y2="8"/><line x1="76" y1="18" x2="76" y2="8"/>
+          <line x1="44" y1="102" x2="44" y2="112"/><line x1="60" y1="102" x2="60" y2="112"/><line x1="76" y1="102" x2="76" y2="112"/>
+          <line x1="18" y1="44" x2="8" y2="44"/><line x1="18" y1="60" x2="8" y2="60"/><line x1="18" y1="76" x2="8" y2="76"/>
+          <line x1="102" y1="44" x2="112" y2="44"/><line x1="102" y1="60" x2="112" y2="60"/><line x1="102" y1="76" x2="112" y2="76"/>
+        </g>
+        <rect x="18" y="18" width="84" height="84" rx="20" stroke="currentColor" stroke-width="3" opacity=".4"/>
+        <g stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity=".75">
+          <line x1="60" y1="60" x2="86" y2="60"/><line x1="60" y1="60" x2="73" y2="37.5"/><line x1="60" y1="60" x2="47" y2="37.5"/>
+          <line x1="60" y1="60" x2="34" y2="60"/><line x1="60" y1="60" x2="47" y2="82.5"/><line x1="60" y1="60" x2="73" y2="82.5"/>
+        </g>
+        <g fill="currentColor">
+          <circle cx="86" cy="60" r="4.5"/><circle cx="73" cy="37.5" r="4.5"/><circle cx="47" cy="37.5" r="4.5"/>
+          <circle cx="34" cy="60" r="4.5"/><circle cx="47" cy="82.5" r="4.5"/><circle cx="73" cy="82.5" r="4.5"/>
+        </g>
+        <rect x="49" y="49" width="22" height="22" rx="6" fill="currentColor"/>
+      </svg>
       <span class="nav-wordmark">KERNEL</span>
     </a>
     <ul class="nav-links">
@@ -448,6 +466,26 @@
   <div class="wrap">
 
     <p class="hero-sublabel">Record Company — Cross-Genre</p>
+
+    <svg width="72" height="72" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" style="color:var(--accent);display:block;margin-bottom:24px;filter:drop-shadow(0 0 10px rgba(31,191,184,0.35))">
+      <g stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity=".35">
+        <line x1="44" y1="18" x2="44" y2="8"/><line x1="60" y1="18" x2="60" y2="8"/><line x1="76" y1="18" x2="76" y2="8"/>
+        <line x1="44" y1="102" x2="44" y2="112"/><line x1="60" y1="102" x2="60" y2="112"/><line x1="76" y1="102" x2="76" y2="112"/>
+        <line x1="18" y1="44" x2="8" y2="44"/><line x1="18" y1="60" x2="8" y2="60"/><line x1="18" y1="76" x2="8" y2="76"/>
+        <line x1="102" y1="44" x2="112" y2="44"/><line x1="102" y1="60" x2="112" y2="60"/><line x1="102" y1="76" x2="112" y2="76"/>
+      </g>
+      <rect x="18" y="18" width="84" height="84" rx="20" stroke="currentColor" stroke-width="3" opacity=".35"/>
+      <g stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity=".8">
+        <line x1="60" y1="60" x2="86" y2="60"/><line x1="60" y1="60" x2="73" y2="37.5"/><line x1="60" y1="60" x2="47" y2="37.5"/>
+        <line x1="60" y1="60" x2="34" y2="60"/><line x1="60" y1="60" x2="47" y2="82.5"/><line x1="60" y1="60" x2="73" y2="82.5"/>
+      </g>
+      <g fill="currentColor">
+        <circle cx="86" cy="60" r="4.5"/><circle cx="73" cy="37.5" r="4.5"/><circle cx="47" cy="37.5" r="4.5"/>
+        <circle cx="34" cy="60" r="4.5"/><circle cx="47" cy="82.5" r="4.5"/><circle cx="73" cy="82.5" r="4.5"/>
+      </g>
+      <rect x="49" y="49" width="22" height="22" rx="6" fill="currentColor"/>
+    </svg>
+
     <h1 class="hero-wordmark">KERNEL</h1>
     <p class="hero-tagline">An independent label operating across the spectrum.<br>Signal over noise.</p>
 
@@ -599,7 +637,24 @@
   <div class="wrap">
     <div class="footer-inner">
       <div class="footer-logo">
-        <span class="status-dot" style="animation:none"></span>
+        <svg width="20" height="20" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" style="color:var(--accent);display:block;flex-shrink:0">
+          <g stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity=".4">
+            <line x1="44" y1="18" x2="44" y2="8"/><line x1="60" y1="18" x2="60" y2="8"/><line x1="76" y1="18" x2="76" y2="8"/>
+            <line x1="44" y1="102" x2="44" y2="112"/><line x1="60" y1="102" x2="60" y2="112"/><line x1="76" y1="102" x2="76" y2="112"/>
+            <line x1="18" y1="44" x2="8" y2="44"/><line x1="18" y1="60" x2="8" y2="60"/><line x1="18" y1="76" x2="8" y2="76"/>
+            <line x1="102" y1="44" x2="112" y2="44"/><line x1="102" y1="60" x2="112" y2="60"/><line x1="102" y1="76" x2="112" y2="76"/>
+          </g>
+          <rect x="18" y="18" width="84" height="84" rx="20" stroke="currentColor" stroke-width="3" opacity=".4"/>
+          <g stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity=".75">
+            <line x1="60" y1="60" x2="86" y2="60"/><line x1="60" y1="60" x2="73" y2="37.5"/><line x1="60" y1="60" x2="47" y2="37.5"/>
+            <line x1="60" y1="60" x2="34" y2="60"/><line x1="60" y1="60" x2="47" y2="82.5"/><line x1="60" y1="60" x2="73" y2="82.5"/>
+          </g>
+          <g fill="currentColor">
+            <circle cx="86" cy="60" r="4.5"/><circle cx="73" cy="37.5" r="4.5"/><circle cx="47" cy="37.5" r="4.5"/>
+            <circle cx="34" cy="60" r="4.5"/><circle cx="47" cy="82.5" r="4.5"/><circle cx="73" cy="82.5" r="4.5"/>
+          </g>
+          <rect x="49" y="49" width="22" height="22" rx="6" fill="currentColor"/>
+        </svg>
         KERNEL
       </div>
       <div class="footer-meta">
