@@ -31,6 +31,8 @@
   --radius:      4px;
 }
 
+@keyframes hsSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
 ::selection { background: #f162ff; color: #19071f; }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -80,7 +82,10 @@ section { padding: 72px 0; }
 .moon {
   border-radius: 50%;
   flex-shrink: 0;
+  animation: hsSpin 60s linear infinite;
+  will-change: transform;
 }
+@media (prefers-reduced-motion: reduce) { .moon { animation: none !important; } }
 .moon-warm {
   border: 1.6px solid var(--warm);
   background: linear-gradient(90deg, var(--warm) 0 50%, transparent 50% 100%);
