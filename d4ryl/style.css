@@ -375,6 +375,65 @@ section { padding: 72px 0; }
 .footer-meta a { color: var(--text-muted); transition: color 0.2s; }
 .footer-meta a:hover { color: var(--accent-2); }
 
+/* ── Release Countdown ──────────────────── */
+.release-countdown {
+  font-size: 1.5rem;
+  letter-spacing: -0.02em;
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 6px;
+  min-height: 1.9em;
+}
+.release-countdown .rc-timer {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 8px;
+  font-family: var(--mono);
+  font-weight: 700;
+  font-size: 1.4rem;
+  line-height: 1;
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+}
+.release-countdown .rc-cell {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  min-width: 2.1ch;
+}
+.release-countdown .rc-num {
+  font-family: var(--mono);
+  font-weight: 700;
+  font-size: 1.6rem;
+  line-height: 1;
+  color: var(--text);
+}
+.release-countdown .rc-lbl {
+  font-family: var(--mono);
+  font-weight: 400;
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+.release-countdown .rc-sep {
+  font-family: var(--mono);
+  font-weight: 700;
+  font-size: 1.4rem;
+  line-height: 1;
+  color: var(--accent-2);
+  opacity: 0.55;
+  margin-bottom: 14px;
+  animation: rc-blink 1.2s ease-in-out infinite;
+}
+.release-countdown.is-live .rc-timer { display: none; }
+.release-countdown.is-live .rc-live { display: inline; }
+@keyframes rc-blink {
+  0%, 100% { opacity: 0.55; }
+  50%      { opacity: 0.15; }
+}
+
 /* ── Utilities ───────────────────────────── */
 .text-center { text-align: center; }
 .mt-2 { margin-top: 8px; }

@@ -77,8 +77,19 @@
 <section id="single">
   <div class="wrap">
     <div class="section-header">
-      <span class="label">// new single</span>
-      <h2>Out Now</h2>
+      <span class="label" id="single-label">// new single</span>
+      <h2 id="release-heading" class="release-countdown" data-release="2026-07-24T00:00:00+02:00" aria-label="Countdown to ADollar?! release on July 24, 2026">
+        <span class="rc-timer" aria-hidden="true">
+          <span class="rc-cell"><span class="rc-num" data-unit="d">--</span><span class="rc-lbl">Days</span></span>
+          <span class="rc-sep">:</span>
+          <span class="rc-cell"><span class="rc-num" data-unit="h">--</span><span class="rc-lbl">Hrs</span></span>
+          <span class="rc-sep">:</span>
+          <span class="rc-cell"><span class="rc-num" data-unit="m">--</span><span class="rc-lbl">Min</span></span>
+          <span class="rc-sep">:</span>
+          <span class="rc-cell"><span class="rc-num" data-unit="s">--</span><span class="rc-lbl">Sec</span></span>
+        </span>
+        <span class="rc-live" hidden>Out Now</span>
+      </h2>
     </div>
 
     <div class="single-card">
@@ -86,7 +97,7 @@
       <!-- Cover — replace assets/cover.jpg with the real artwork -->
       <div class="single-cover">
         <img src="assets/cover-adollar.jpg" alt="D4RYL – ADollar?! Cover" />
-        <div class="single-date-tag">out July 24, 2026</div>
+        <div class="single-date-tag" id="single-date-tag">out July 24, 2026</div>
       </div>
 
       <div class="single-info">
@@ -334,6 +345,53 @@
         requestAnimationFrame(loop);
       })(last);
     });
+  })();
+</script>
+
+<script>
+  /* ─── Release Countdown ───────────────────
+     Ticker to the release date (Europe/Berlin).
+     Switches to "Out Now" once the release is live. */
+  (function () {
+    var el = document.getElementById('release-heading');
+    if (!el) return;
+    var target = new Date(el.dataset.release).getTime();
+    if (!isFinite(target)) return;
+    var nums = {
+      d: el.querySelector('[data-unit="d"]'),
+      h: el.querySelector('[data-unit="h"]'),
+      m: el.querySelector('[data-unit="m"]'),
+      s: el.querySelector('[data-unit="s"]')
+    };
+    var live = el.querySelector('.rc-live');
+    var label = document.getElementById('single-label');
+    var dateTag = document.getElementById('single-date-tag');
+    var timer = null;
+
+    function pad(n) { return n < 10 ? '0' + n : '' + n; }
+
+    function tick() {
+      var diff = target - Date.now();
+      if (diff <= 0) {
+        el.classList.add('is-live');
+        if (live) live.hidden = false;
+        if (label) label.textContent = '// out now';
+        if (dateTag) dateTag.textContent = 'Out Now';
+        if (timer) clearInterval(timer);
+        return;
+      }
+      var s = Math.floor(diff / 1000);
+      var d = Math.floor(s / 86400); s -= d * 86400;
+      var h = Math.floor(s / 3600);  s -= h * 3600;
+      var m = Math.floor(s / 60);    s -= m * 60;
+      nums.d.textContent = d;
+      nums.h.textContent = pad(h);
+      nums.m.textContent = pad(m);
+      nums.s.textContent = pad(s);
+    }
+
+    tick();
+    timer = setInterval(tick, 1000);
   })();
 </script>
 
