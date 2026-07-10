@@ -71,23 +71,41 @@
 <section id="single">
   <div class="wrap">
     <div class="section-header">
-      <span class="label">// neue single</span>
-      <h2>Out Now</h2>
+      <span class="label">// nächste single</span>
+      <h2>Zwischenraum</h2>
     </div>
 
     <div class="single-card">
       <div class="single-cover">
-        <!-- <img src="assets/cover.jpg" alt="HalbSchlaf Cover" /> -->
-        <div class="single-cover-placeholder">
-          <div class="moon moon-warm" style="width:100px;height:100px;opacity:0.55"></div>
-          <span>Artwork coming soon</span>
-        </div>
-        <div class="single-date-tag">Coming Soon</div>
+        <img src="assets/zwischenraum-cover.jpg" alt="HalbSchlaf — Zwischenraum" />
+        <div class="single-date-tag" id="release-tag">14 · 08 · 2026</div>
       </div>
 
       <div class="single-info">
-        <h3 class="single-title">— —</h3>
+        <h3 class="single-title">Zwischenraum</h3>
         <p class="single-artist">HalbSchlaf</p>
+
+        <!-- ── Countdown Ticker ────────────────────────────────── -->
+        <div class="countdown" id="countdown" aria-label="Countdown bis Release"
+             style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:18px 0 22px;max-width:360px">
+          <div class="cd-box" style="text-align:center;padding:10px 6px;border-radius:10px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08)">
+            <div class="cd-num" id="cd-days"  style="font-family:'Space Mono',monospace;font-size:26px;font-weight:600;color:#e9d9b8;line-height:1">—</div>
+            <div class="cd-label" style="font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-top:4px">Tage</div>
+          </div>
+          <div class="cd-box" style="text-align:center;padding:10px 6px;border-radius:10px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08)">
+            <div class="cd-num" id="cd-hours" style="font-family:'Space Mono',monospace;font-size:26px;font-weight:600;color:#e9d9b8;line-height:1">—</div>
+            <div class="cd-label" style="font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-top:4px">Stunden</div>
+          </div>
+          <div class="cd-box" style="text-align:center;padding:10px 6px;border-radius:10px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08)">
+            <div class="cd-num" id="cd-mins"  style="font-family:'Space Mono',monospace;font-size:26px;font-weight:600;color:#e9d9b8;line-height:1">—</div>
+            <div class="cd-label" style="font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-top:4px">Minuten</div>
+          </div>
+          <div class="cd-box" style="text-align:center;padding:10px 6px;border-radius:10px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08)">
+            <div class="cd-num" id="cd-secs"  style="font-family:'Space Mono',monospace;font-size:26px;font-weight:600;color:#e9d9b8;line-height:1">—</div>
+            <div class="cd-label" style="font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-top:4px">Sekunden</div>
+          </div>
+        </div>
+
         <div class="single-actions">
           <a href="javascript:void(0)" onclick="window.open(LINKS.presave,'_blank')" class="btn btn-primary">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
@@ -250,6 +268,38 @@
     btn.disabled = true;
     setTimeout(() => { btn.textContent = orig; btn.disabled = false; }, 3000);
   }
+
+  // ── Release-Countdown "Zwischenraum" ─────────────────────────────
+  // Release: 14.08.2026 00:00 Berlin-Zeit (CEST = UTC+2)
+  (function () {
+    const RELEASE = new Date('2026-08-14T00:00:00+02:00').getTime();
+    const $d = document.getElementById('cd-days');
+    const $h = document.getElementById('cd-hours');
+    const $m = document.getElementById('cd-mins');
+    const $s = document.getElementById('cd-secs');
+    const $tag = document.getElementById('release-tag');
+    if (!$d) return;
+    const pad = n => String(Math.max(0, n)).padStart(2, '0');
+    function tick() {
+      const now = Date.now();
+      const diff = RELEASE - now;
+      if (diff <= 0) {
+        $d.textContent = '00'; $h.textContent = '00'; $m.textContent = '00'; $s.textContent = '00';
+        if ($tag) $tag.textContent = 'OUT NOW';
+        return;
+      }
+      const days  = Math.floor(diff / 86_400_000);
+      const hours = Math.floor((diff % 86_400_000) / 3_600_000);
+      const mins  = Math.floor((diff % 3_600_000) / 60_000);
+      const secs  = Math.floor((diff % 60_000) / 1_000);
+      $d.textContent = pad(days);
+      $h.textContent = pad(hours);
+      $m.textContent = pad(mins);
+      $s.textContent = pad(secs);
+    }
+    tick();
+    setInterval(tick, 1000);
+  })();
 </script>
 
 </body>
