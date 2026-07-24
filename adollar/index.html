@@ -6,8 +6,8 @@
   <title>D4RYL — ADollar?!</title>
   <meta name="description" content="D4RYL — ADollar?! — Listen on Spotify." />
 
-  <!-- Instant redirect -->
-  <meta http-equiv="refresh" content="0; url=https://open.spotify.com/track/5pa5YSoB54NfG3o4RVt9NO" />
+  <!-- No-JS fallback: 3 s meta refresh to the Spotify web page -->
+  <meta http-equiv="refresh" content="3; url=https://open.spotify.com/track/5pa5YSoB54NfG3o4RVt9NO" />
   <link rel="canonical" href="https://open.spotify.com/track/5pa5YSoB54NfG3o4RVt9NO" />
 
   <!-- Open Graph / preview when shared -->
@@ -32,11 +32,36 @@
 <body>
   <main>
     <h1>D4RYL — ADollar?!</h1>
-    <p>Redirecting to Spotify…</p>
+    <p>Opening Spotify…</p>
     <p><a href="https://open.spotify.com/track/5pa5YSoB54NfG3o4RVt9NO">Tap here if nothing happens</a></p>
   </main>
   <script>
-    location.replace('https://open.spotify.com/track/5pa5YSoB54NfG3o4RVt9NO');
+    (function () {
+      var trackId = '5pa5YSoB54NfG3o4RVt9NO';
+      var webUrl  = 'https://open.spotify.com/track/' + trackId;
+      var appUri  = 'spotify:track:' + trackId;
+      var isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+      if (!isMobile) {
+        window.location.replace(webUrl);
+        return;
+      }
+
+      // Mobile: try the native app URI; fall back to web only if the page
+      // stays visible (i.e. the app didn't take over).
+      var appOpened = false;
+      document.addEventListener('visibilitychange', function () {
+        if (document.hidden) appOpened = true;
+      });
+      window.addEventListener('pagehide', function () { appOpened = true; });
+      window.addEventListener('blur',     function () { appOpened = true; });
+
+      setTimeout(function () {
+        if (!appOpened) window.location.replace(webUrl);
+      }, 1500);
+
+      window.location.href = appUri;
+    })();
   </script>
 </body>
 </html>
