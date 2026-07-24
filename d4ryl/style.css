@@ -273,15 +273,13 @@ section { padding: 72px 0; }
 
 /* ── Musik / Player ──────────────────────── */
 #musik { border-bottom: 1px solid var(--border); }
-.player-placeholder {
+.player-embed {
+  border-radius: var(--radius);
+  overflow: hidden;
   background: var(--bg-card);
   border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 40px 24px;
-  text-align: center;
 }
-.player-placeholder .label { margin-bottom: 8px; display: block; }
-.player-placeholder p { font-size: 0.85rem; color: var(--text-dim); }
+.player-embed iframe { display: block; width: 100%; }
 
 /* ── Shop ────────────────────────────────── */
 #shop { border-bottom: 1px solid var(--border); }
@@ -432,6 +430,15 @@ section { padding: 72px 0; }
 @keyframes rc-blink {
   0%, 100% { opacity: 0.55; }
   50%      { opacity: 0.15; }
+}
+.release-live {
+  font-family: var(--mono);
+  font-weight: 700;
+  font-size: 1.4rem;
+  line-height: 1;
+  letter-spacing: 0.06em;
+  color: var(--accent-1);
+  text-transform: uppercase;
 }
 
 /* ── Utilities ───────────────────────────── */

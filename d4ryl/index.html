@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>D4RYL — Trap & Lofi · Hamburg</title>
-  <meta name="description" content="D4RYL — Trap & Lofi from Hamburg. New single out July 24, 2026." />
+  <meta name="description" content="D4RYL — Trap & Lofi from Hamburg. New single ADollar?! out now." />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -16,13 +16,15 @@
   <script>
     /* ─── All external links here ─── */
     const LINKS = {
-      spotify:      '#',   /* TODO: Spotify Artist URL */
-      spotifyTrack: '#',   /* TODO: Spotify Track URL (Pre-save / Stream) */
-      appleMusic:   '#',   /* TODO: Apple Music URL */
-      youtube:      '#',   /* TODO: YouTube Channel */
-      instagram:    '#',   /* TODO: Instagram Profile */
-      tiktok:       '#',   /* TODO: TikTok Profile */
-      presave:      '#',   /* TODO: Pre-save link (DistroKid / Feature.fm) */
+      spotify:      'https://open.spotify.com/artist/0kjt87JlZYZmEQSwPVGuLr',
+      spotifyTrack: 'https://open.spotify.com/track/5pa5YSoB54NfG3o4RVt9NO',
+      appleMusic:   'https://music.apple.com/de/album/adollar/6781027348?i=6781027355',
+      smartLink:    'https://social.tunecore.com/linkShare?linkid=vv6OUnrHz10LOqzD3NhVyw',
+      youtube:      'https://www.youtube.com/watch?v=wwgW_oOKVOY',
+      youtubeTrack: 'https://www.youtube.com/watch?v=wwgW_oOKVOY',
+      instagram:    'https://www.instagram.com/d4ryl_beatz/',
+      tiktok:       'https://www.tiktok.com/@d4ryl.ink',
+      presave:      'https://social.tunecore.com/linkShare?linkid=vv6OUnrHz10LOqzD3NhVyw',
       /* Shop links (Phase 2) */
       shopBeats:    '#',   /* TODO: Gumroad / Bandcamp Beats */
       shopPacks:    '#',   /* TODO: Sample Packs */
@@ -77,19 +79,8 @@
 <section id="single">
   <div class="wrap">
     <div class="section-header">
-      <span class="label" id="single-label">// new single</span>
-      <h2 id="release-heading" class="release-countdown" data-release="2026-07-24T00:00:00+02:00" aria-label="Countdown to ADollar?! release on July 24, 2026">
-        <span class="rc-timer" aria-hidden="true">
-          <span class="rc-cell"><span class="rc-num" data-unit="d">--</span><span class="rc-lbl">Days</span></span>
-          <span class="rc-sep">:</span>
-          <span class="rc-cell"><span class="rc-num" data-unit="h">--</span><span class="rc-lbl">Hrs</span></span>
-          <span class="rc-sep">:</span>
-          <span class="rc-cell"><span class="rc-num" data-unit="m">--</span><span class="rc-lbl">Min</span></span>
-          <span class="rc-sep">:</span>
-          <span class="rc-cell"><span class="rc-num" data-unit="s">--</span><span class="rc-lbl">Sec</span></span>
-        </span>
-        <span class="rc-live" hidden>Out Now</span>
-      </h2>
+      <span class="label" id="single-label">// out now</span>
+      <h2 id="release-heading" class="release-live" aria-label="ADollar?! is out now">Out Now</h2>
     </div>
 
     <div class="single-card">
@@ -97,16 +88,16 @@
       <!-- Cover — replace assets/cover.jpg with the real artwork -->
       <div class="single-cover">
         <img src="assets/cover-adollar.jpg" alt="D4RYL – ADollar?! Cover" />
-        <div class="single-date-tag" id="single-date-tag">out July 24, 2026</div>
+        <div class="single-date-tag" id="single-date-tag">Out Now</div>
       </div>
 
       <div class="single-info">
         <h3 class="single-title">ADollar?!</h3>
         <p class="single-artist">D4RYL</p>
         <div class="single-actions">
-          <a href="javascript:void(0)" onclick="window.open(LINKS.presave,'_blank')" class="btn btn-primary">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
-            Pre-save
+          <a href="javascript:void(0)" onclick="window.open(LINKS.smartLink,'_blank')" class="btn btn-primary">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            Listen
           </a>
           <a href="javascript:void(0)" onclick="window.open(LINKS.spotifyTrack,'_blank')" class="btn btn-outline">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
@@ -130,18 +121,16 @@
       <h2>Tracks</h2>
     </div>
 
-    <!-- TODO: Add Spotify iframe embed when track is live -->
-    <!-- Example:
-    <iframe style="border-radius:4px"
-      src="https://open.spotify.com/embed/track/TRACK_ID?utm_source=generator&theme=0"
-      width="100%" height="152" frameborder="0"
-      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-      loading="lazy"></iframe>
-    -->
-
-    <div class="player-placeholder">
-      <span class="label">// spotify player</span>
-      <p class="mt-2">Embed available after release on July 24, 2026.</p>
+    <div class="player-embed">
+      <iframe
+        style="border-radius:4px"
+        src="https://open.spotify.com/embed/track/5pa5YSoB54NfG3o4RVt9NO?utm_source=generator&theme=0"
+        width="100%"
+        height="152"
+        frameborder="0"
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+        loading="lazy"
+        title="ADollar?! on Spotify"></iframe>
     </div>
 
   </div>
@@ -345,53 +334,6 @@
         requestAnimationFrame(loop);
       })(last);
     });
-  })();
-</script>
-
-<script>
-  /* ─── Release Countdown ───────────────────
-     Ticker to the release date (Europe/Berlin).
-     Switches to "Out Now" once the release is live. */
-  (function () {
-    var el = document.getElementById('release-heading');
-    if (!el) return;
-    var target = new Date(el.dataset.release).getTime();
-    if (!isFinite(target)) return;
-    var nums = {
-      d: el.querySelector('[data-unit="d"]'),
-      h: el.querySelector('[data-unit="h"]'),
-      m: el.querySelector('[data-unit="m"]'),
-      s: el.querySelector('[data-unit="s"]')
-    };
-    var live = el.querySelector('.rc-live');
-    var label = document.getElementById('single-label');
-    var dateTag = document.getElementById('single-date-tag');
-    var timer = null;
-
-    function pad(n) { return n < 10 ? '0' + n : '' + n; }
-
-    function tick() {
-      var diff = target - Date.now();
-      if (diff <= 0) {
-        el.classList.add('is-live');
-        if (live) live.hidden = false;
-        if (label) label.textContent = '// out now';
-        if (dateTag) dateTag.textContent = 'Out Now';
-        if (timer) clearInterval(timer);
-        return;
-      }
-      var s = Math.floor(diff / 1000);
-      var d = Math.floor(s / 86400); s -= d * 86400;
-      var h = Math.floor(s / 3600);  s -= h * 3600;
-      var m = Math.floor(s / 60);    s -= m * 60;
-      nums.d.textContent = d;
-      nums.h.textContent = pad(h);
-      nums.m.textContent = pad(m);
-      nums.s.textContent = pad(s);
-    }
-
-    tick();
-    timer = setInterval(tick, 1000);
   })();
 </script>
 
