@@ -170,17 +170,51 @@
       btn.disabled = !checkbox.checked;
     });
 
-    // Download-Handler — vorerst Platzhalter.
-    // TODO(HD-Bundle-Backend): Auf /api/purchase/download/{token} routen,
-    // sobald der Backend-Endpoint (Rev-22-Sonic-Todo) scharf ist. Token
-    // wird von Stripe-Webhook nach `checkout.session.completed` erzeugt
-    // und per E-Mail geschickt (Rückgriff-Link).
+    // Backend-Polling: fragt /api/purchase/status/{session_id} bis Delivery ready ist.
+    // Die eigentliche Download-URL kommt vom Webhook nach Stripe-Bestätigung,
+    // typisch <10 s Verzögerung.
+    var API_BASE = 'https://inbound.kernelrec.com';
+    var downloadUrl = null;
+
+    function setStatus(text) {
+      var hint = document.querySelector('.email-hint');
+      if (hint) hint.textContent = text;
+    }
+
+    if (sessionId) {
+      var attempts = 0;
+      var maxAttempts = 30;   // 30 × 2 s = 60 s
+      var timer = setInterval(function () {
+        attempts++;
+        fetch(API_BASE + '/api/purchase/status/' + encodeURIComponent(sessionId), { cache: 'no-store' })
+          .then(function (r) { return r.json(); })
+          .then(function (data) {
+            if (data.status === 'ready' && data.download_url) {
+              clearInterval(timer);
+              downloadUrl = API_BASE + data.download_url;
+              setStatus('Download bereit — auch als Link in deiner E-Mail.');
+            } else if (attempts >= maxAttempts) {
+              clearInterval(timer);
+              setStatus(
+                'Download-Link wird noch erzeugt. Du bekommst ihn per E-Mail — ' +
+                'prüfe ggf. den Spam-Ordner oder schreib an hello@kernelrec.com.'
+              );
+            }
+          })
+          .catch(function () { /* ignore polling errors, wait */ });
+      }, 2000);
+    }
+
     btn.addEventListener('click', function () {
-      alert(
-        'Danke! Dein persönlicher Download-Link kommt in wenigen Minuten per E-Mail.\n\n' +
-        'Der direkte Download-Button auf dieser Seite wird in Kürze aktiviert — ' +
-        'bis dahin ist die E-Mail dein Weg.'
-      );
+      if (downloadUrl) {
+        // Öffnet Download in gleicher Session — Browser lädt die ZIP herunter
+        window.location.href = downloadUrl;
+      } else {
+        alert(
+          'Dein Download-Link wird gerade erzeugt und kommt in wenigen Sekunden — ' +
+          'zusätzlich schicken wir ihn dir per E-Mail. Prüfe kurz die Statusanzeige unten.'
+        );
+      }
     });
   })();
 </script>
