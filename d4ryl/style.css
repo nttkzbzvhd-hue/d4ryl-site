@@ -269,8 +269,21 @@ section { padding: 72px 0; }
   text-transform: uppercase;
   margin-bottom: 20px;
 }
-.single-actions { display: flex; gap: 8px; flex-wrap: wrap; }
-.single-actions .btn { padding: 10px 14px; }
+.single-actions {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+}
+.single-actions .btn {
+  padding: 10px 4px;
+  font-size: 8px;
+  letter-spacing: 0.08em;
+  gap: 5px;
+  justify-content: center;
+  min-width: 0;
+  overflow: hidden;
+}
+.single-actions .btn svg { width: 12px; height: 12px; flex-shrink: 0; }
 
 /* ── Musik / Player ──────────────────────── */
 #musik { border-bottom: 1px solid var(--border); }
@@ -321,9 +334,6 @@ section { padding: 72px 0; }
 }
 .link-btn svg { width: 18px; height: 18px; flex-shrink: 0; opacity: 0.6; }
 .link-btn:hover svg { opacity: 1; }
-.dsp-logo { height: 14px; width: 65px; flex-shrink: 0; display: block; }
-.link-btn .dsp-logo { height: 18px; width: 84px; opacity: 0.85; transition: opacity 0.2s; }
-.link-btn:hover .dsp-logo { opacity: 1; }
 .link-btn-arrow { margin-left: auto; font-size: 12px; opacity: 0.3; }
 .link-btn:hover .link-btn-arrow { opacity: 1; }
 
