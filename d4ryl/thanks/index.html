@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vielen Dank — D4RYL</title>
+  <meta name="description" content="Kaufbestätigung — D4RYL / Kernel Records" />
+  <meta name="robots" content="noindex, nofollow" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css?v=3" />
+
+  <style>
+    .thanks-wrap { max-width: 640px; margin: 0 auto; padding: 64px 24px 96px; }
+    .thanks-header { text-align: center; margin-bottom: 40px; }
+    .thanks-check {
+      width: 64px; height: 64px; margin: 0 auto 24px;
+      border-radius: 50%;
+      background: rgba(138, 48, 127, 0.15);
+      border: 2px solid var(--accent);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .thanks-check svg { fill: var(--accent); }
+    .thanks-title { font-size: 2rem; margin: 0 0 8px; letter-spacing: -0.02em; }
+    .thanks-sub {
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em;
+      text-transform: uppercase; opacity: 0.5; margin: 0;
+    }
+
+    .order-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px 24px; margin-bottom: 16px;
+    }
+    .order-label {
+      font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em;
+      text-transform: uppercase; opacity: 0.4; margin-bottom: 6px;
+    }
+    .order-value { font-family: var(--mono); font-size: 13px; word-break: break-all; }
+
+    .consent-box {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px 24px; margin: 24px 0 20px;
+    }
+    .consent-box label {
+      display: flex; align-items: flex-start; gap: 12px; cursor: pointer;
+      font-size: 0.9rem; line-height: 1.5;
+    }
+    .consent-box input[type="checkbox"] {
+      width: 18px; height: 18px; flex-shrink: 0; margin-top: 2px;
+      cursor: pointer; accent-color: var(--accent);
+    }
+    .consent-legal {
+      font-size: 0.75rem; opacity: 0.55; margin: 12px 0 0 30px;
+      line-height: 1.6;
+    }
+
+    .download-row { text-align: center; margin: 24px 0; }
+    .download-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--accent); color: var(--text);
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em;
+      text-transform: uppercase; font-weight: 700;
+      padding: 14px 32px; border: 1px solid var(--accent);
+      border-radius: var(--radius); cursor: pointer;
+      transition: background 0.2s, opacity 0.2s, box-shadow 0.2s;
+    }
+    .download-btn:disabled {
+      opacity: 0.32; cursor: not-allowed;
+      background: transparent; color: var(--text-muted);
+      border-color: var(--border);
+    }
+    .download-btn:not(:disabled):hover {
+      background: #a03892;
+      box-shadow: 0 0 16px rgba(138, 48, 127, 0.4);
+    }
+
+    .email-hint {
+      margin-top: 32px; padding-top: 24px;
+      border-top: 1px solid var(--border);
+      font-size: 0.85rem; opacity: 0.65; line-height: 1.6; text-align: center;
+    }
+    .email-hint a { color: var(--accent-2); }
+
+    footer.thanks-footer {
+      margin-top: 48px; padding-top: 24px;
+      border-top: 1px solid var(--border);
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em;
+      text-transform: uppercase; opacity: 0.5; text-align: center;
+    }
+    footer.thanks-footer a { color: var(--text); margin: 0 12px; text-decoration: none; }
+    footer.thanks-footer a:hover { color: var(--accent-2); }
+  </style>
+</head>
+<body>
+
+<div class="thanks-wrap">
+
+  <div class="thanks-header">
+    <div class="thanks-check">
+      <svg width="32" height="32" viewBox="0 0 24 24"><path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+    </div>
+    <h1 class="thanks-title">Vielen Dank!</h1>
+    <p class="thanks-sub">Dein Kauf war erfolgreich</p>
+  </div>
+
+  <div class="order-card">
+    <div class="order-label">Bestellung</div>
+    <div class="order-value">ADollar?! — HD Bundle</div>
+  </div>
+
+  <div class="order-card" id="session-card" hidden>
+    <div class="order-label">Bestell-Referenz</div>
+    <div class="order-value" id="session-id-display"></div>
+  </div>
+
+  <div class="consent-box">
+    <label>
+      <input type="checkbox" id="consent-checkbox" />
+      <span>Ich stimme ausdrücklich zu, dass mit Beginn des Downloads mein Widerrufsrecht erlischt (§&nbsp;356&nbsp;Abs.&nbsp;5 BGB).</span>
+    </label>
+    <p class="consent-legal">
+      Bei digitalen Inhalten erlischt das gesetzliche 14-tägige Widerrufsrecht,
+      sobald du dem sofortigen Download zugestimmt hast. Ohne diese Zustimmung
+      bekommst du den Download-Link ausschließlich per E-Mail — bis zum ersten
+      Klick darauf kannst du dein Widerrufsrecht ausüben.
+    </p>
+  </div>
+
+  <div class="download-row">
+    <button class="download-btn" id="download-btn" disabled>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+      Download starten
+    </button>
+  </div>
+
+  <p class="email-hint">
+    Die Bestellbestätigung und der Download-Link kommen zusätzlich per E-Mail
+    (typischerweise innerhalb von 1–2 Minuten). Nichts angekommen?
+    Prüfe den Spam-Ordner oder schreib an
+    <a href="mailto:hello@kernelrec.com">hello@kernelrec.com</a>.
+  </p>
+
+  <footer class="thanks-footer">
+    <a href="/d4ryl">← Zurück zu D4RYL</a>
+  </footer>
+
+</div>
+
+<script>
+  (function () {
+    // Session-ID aus URL kürzen und anzeigen (falls vorhanden)
+    var params = new URLSearchParams(window.location.search);
+    var sessionId = params.get('session_id');
+    if (sessionId) {
+      var short = sessionId.length > 16
+        ? sessionId.slice(0, 10) + '…' + sessionId.slice(-6)
+        : sessionId;
+      document.getElementById('session-id-display').textContent = short;
+      document.getElementById('session-card').hidden = false;
+    }
+
+    // Widerrufs-Zustimmung → Download-Button aktivieren
+    var checkbox = document.getElementById('consent-checkbox');
+    var btn = document.getElementById('download-btn');
+    checkbox.addEventListener('change', function () {
+      btn.disabled = !checkbox.checked;
+    });
+
+    // Download-Handler — vorerst Platzhalter.
+    // TODO(HD-Bundle-Backend): Auf /api/purchase/download/{token} routen,
+    // sobald der Backend-Endpoint (Rev-22-Sonic-Todo) scharf ist. Token
+    // wird von Stripe-Webhook nach `checkout.session.completed` erzeugt
+    // und per E-Mail geschickt (Rückgriff-Link).
+    btn.addEventListener('click', function () {
+      alert(
+        'Danke! Dein persönlicher Download-Link kommt in wenigen Minuten per E-Mail.\n\n' +
+        'Der direkte Download-Button auf dieser Seite wird in Kürze aktiviert — ' +
+        'bis dahin ist die E-Mail dein Weg.'
+      );
+    });
+  })();
+</script>
+
+</body>
+</html>
