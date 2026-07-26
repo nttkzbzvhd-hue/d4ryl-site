@@ -61,8 +61,11 @@
   </p>
   <p>
     Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an
-    stabilem und sicherem Betrieb der Website). Die Daten werden nach kurzer
-    Zeit automatisch gelöscht bzw. anonymisiert.
+    stabilem und sicherem Betrieb der Website) in Verbindung mit § 25 Abs. 2
+    Nr. 2 TTDSG (unbedingt erforderlich für die Auslieferung des Dienstes).
+    Cloudflare löscht IP-basierte Server-Logs gemäß Standard-Retention nach
+    spätestens 30 Tagen; GitHub Pages verarbeitet nach eigenen Angaben
+    entsprechend.
   </p>
   <p>
     Dienstleister:
@@ -74,13 +77,21 @@
       — <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">Privacy Policy</a></li>
   </ul>
 
-  <h2>3. Kontaktaufnahme per E-Mail</h2>
+  <h2>3. Kontaktaufnahme per E-Mail und Kontaktformular</h2>
   <p>
-    Wenn Sie uns per E-Mail kontaktieren, verarbeiten wir Ihre Angaben zur
-    Beantwortung Ihrer Anfrage. Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO
-    (Vertragsanbahnung/-erfüllung) bzw. lit. f (berechtigtes Interesse an
-    Beantwortung). Die Daten werden gelöscht, sobald die Anfrage abschließend
-    bearbeitet ist und keine gesetzlichen Aufbewahrungspflichten entgegenstehen.
+    Wenn Sie uns per E-Mail oder über das Formular unter
+    <a href="/kontakt">kernelrec.com/kontakt</a> kontaktieren, verarbeiten wir
+    Ihre Angaben zur Beantwortung Ihrer Anfrage. Rechtsgrundlage: Art. 6 Abs. 1
+    lit. b DSGVO (Vertragsanbahnung/-erfüllung) bzw. lit. f (berechtigtes
+    Interesse an Beantwortung). Die Daten werden gelöscht, sobald die Anfrage
+    abschließend bearbeitet ist und keine gesetzlichen Aufbewahrungspflichten
+    entgegenstehen (typischerweise nach 6&nbsp;Monaten).
+  </p>
+  <p>
+    Das Kontaktformular überträgt Ihre Angaben nicht an einen eigenen Server,
+    sondern öffnet Ihr lokales E-Mail-Programm mit vorbereiteter Nachricht.
+    Der Versand erfolgt anschließend durch Ihr eigenes Mail-Programm über
+    Ihren E-Mail-Provider.
   </p>
 
   <h2>4. Zahlungsabwicklung (Stripe)</h2>
@@ -107,14 +118,16 @@
     Nach erfolgreichem Kauf senden wir Ihnen eine E-Mail mit einem persönlichen
     Download-Link (HMAC-signiert, 24 h gültig). Dazu verarbeiten wir Ihre von
     Stripe übermittelte E-Mail-Adresse. Rechtsgrundlage: Art. 6 Abs. 1 lit. b
-    DSGVO (Vertragserfüllung). Der E-Mail-Versand erfolgt über Sendinblue/Brevo
-    (siehe unten).
+    DSGVO (Vertragserfüllung). Der E-Mail-Versand erfolgt über Brevo (siehe
+    unten). Der Kauf-Datensatz (Session-ID, E-Mail, Zeitstempel, Bundle-Slug)
+    wird zur Nachweis- und Steuerdokumentation gemäß gesetzlichen Aufbewahrungs­fristen
+    (10&nbsp;Jahre nach § 147 AO) gespeichert.
   </p>
 
   <h2>6. E-Mail-Versand (Brevo)</h2>
   <p>
     Für den Versand von Kauf-Bestätigungen und optionalen Newslettern nutzen wir
-    Sendinblue SAS (Marke „Brevo"), 106 Boulevard Haussmann, 75008 Paris,
+    Brevo SAS (vormals Sendinblue), 106 Boulevard Haussmann, 75008 Paris,
     Frankreich —
     <a href="https://www.brevo.com/de/legal/privacypolicy/" target="_blank" rel="noopener">Datenschutzerklärung</a>.
   </p>
@@ -132,20 +145,32 @@
 
   <h2>7. Cookies</h2>
   <p>
-    Diese Website setzt selbst keine Tracking-Cookies. Technisch notwendige
-    Cookies können durch Cloudflare (Sicherheits-/Bot-Schutz) oder durch
-    eingebettete Inhalte (z.&nbsp;B. Spotify-Player) gesetzt werden.
-    Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an
-    Sicherheit und Funktionsfähigkeit).
+    Diese Website setzt selbst keine Tracking-Cookies. Cloudflare kann für die
+    Sicherheits- und Bot-Erkennung technisch erforderliche Cookies (z.&nbsp;B.
+    <code>__cf_bm</code>) setzen. Rechtsgrundlage: § 25 Abs. 2 Nr. 2 TTDSG
+    (unbedingt erforderlich für den vom Nutzer gewünschten Dienst) in Verbindung
+    mit Art. 6 Abs. 1 lit. f DSGVO. Nicht-notwendige Cookies durch eingebettete
+    Inhalte werden erst nach Ihrer aktiven Einwilligung geladen (siehe § 8).
   </p>
 
-  <h2>8. Eingebettete Inhalte Dritter</h2>
+  <h2>8. Eingebettete Inhalte Dritter (Spotify-Player, Consent-basiert)</h2>
   <p>
-    Auf der Seite <a href="/d4ryl">/d4ryl</a> ist ein Spotify-Player eingebettet.
-    Beim Laden des Players stellt Ihr Browser eine Verbindung zu Spotify-Servern
-    her. Wir haben keinen Einfluss auf die Datenverarbeitung durch Spotify.
+    Auf der Seite <a href="/d4ryl">/d4ryl</a> kann ein Spotify-Player geladen
+    werden. Aus Datenschutzgründen wird der Player <strong>nicht automatisch
+    geladen</strong>: Sie sehen zunächst nur einen Platzhalter mit dem Hinweis
+    „Player laden". Erst wenn Sie diesen Button klicken, wird eine Verbindung
+    zu Spotify-Servern hergestellt und der Player samt zugehöriger Cookies
+    geladen.
+  </p>
+  <p>
+    Rechtsgrundlage für das Laden nach Ihrem Klick: § 25 Abs. 1 TTDSG i.&nbsp;V.&nbsp;m.
+    Art. 6 Abs. 1 lit. a DSGVO (Einwilligung durch aktive Handlung). Bis zum
+    Klick werden keine Daten an Spotify übermittelt.
+  </p>
+  <p>
     Anbieter: Spotify AB, Regeringsgatan 19, 111 53 Stockholm, Schweden —
     <a href="https://www.spotify.com/de/legal/privacy-policy/" target="_blank" rel="noopener">Datenschutzerklärung</a>.
+    Wir haben keinen Einfluss auf die Datenverarbeitung durch Spotify.
   </p>
 
   <h2>9. Weitergabe an Dritte</h2>
@@ -185,6 +210,8 @@
     <a href="/impressum">Impressum</a>
     <a href="/datenschutz">Datenschutz</a>
     <a href="/widerruf">Widerruf</a>
+    <a href="/agb">AGB</a>
+    <a href="/kontakt">Kontakt</a>
   </footer>
 </main>
 </body>

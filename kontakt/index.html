@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kontakt — Kernel Records</title>
+  <meta name="description" content="Kontaktformular für Kernel Records / D4RYL." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    html, body { margin: 0; padding: 0; background: #0a0a0a; color: #eaeaea;
+      font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.65; }
+    main { max-width: 640px; margin: 0 auto; padding: 56px 24px 96px; }
+    h1 { font-size: 2rem; letter-spacing: -0.02em; margin: 0 0 8px; }
+    .updated { font-family: 'Space Mono', monospace; font-size: 11px;
+      letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.4;
+      margin-bottom: 40px; display: block; }
+    p { margin: 0 0 12px; opacity: 0.85; font-size: 0.95rem; }
+    a { color: #8a307f; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    form { margin-top: 32px; }
+    label { display: block; margin-bottom: 20px; font-family: 'Space Mono', monospace;
+      font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.7; }
+    input[type="text"], input[type="email"], textarea {
+      width: 100%; margin-top: 6px; padding: 12px 14px; box-sizing: border-box;
+      background: #131313; border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 6px; color: #eaeaea;
+      font-family: 'Space Grotesk', -apple-system, sans-serif; font-size: 0.95rem;
+      letter-spacing: normal; text-transform: none;
+    }
+    textarea { min-height: 140px; resize: vertical; font-family: inherit; }
+    input:focus, textarea:focus { outline: none; border-color: #8a307f; }
+    .hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+    button {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #8a307f; color: #fff;
+      font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 0.14em;
+      text-transform: uppercase; font-weight: 700;
+      padding: 14px 32px; border: 1px solid #8a307f;
+      border-radius: 6px; cursor: pointer;
+      transition: background 0.2s, box-shadow 0.2s;
+    }
+    button:hover { background: #a03892; box-shadow: 0 0 16px rgba(138,48,127,0.4); }
+    .hint { font-size: 0.82rem; opacity: 0.55; margin-top: 16px; line-height: 1.55; }
+    footer { margin-top: 64px; padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      font-family: 'Space Mono', monospace; font-size: 11px;
+      letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.5; }
+    footer a { color: #eaeaea; margin-right: 20px; }
+  </style>
+</head>
+<body>
+<main>
+  <h1>Kontakt</h1>
+  <span class="updated">Kernel Records / D4RYL</span>
+
+  <p>
+    Anfragen, Widerrufserklärungen, Presse und alles andere gehen an
+    <a href="mailto:hello@kernelrec.com">hello@kernelrec.com</a>.
+    Alternativ das Formular unten — beim Absenden öffnet sich dein Mail-Programm
+    mit vorbereiteter Nachricht.
+  </p>
+
+  <form id="contact-form" onsubmit="return sendMail(event)">
+    <label>
+      Name
+      <input type="text" id="cf-name" required autocomplete="name" />
+    </label>
+    <label>
+      E-Mail (für Antwort)
+      <input type="email" id="cf-email" required autocomplete="email" />
+    </label>
+    <label>
+      Betreff
+      <input type="text" id="cf-subject" required />
+    </label>
+    <label>
+      Nachricht
+      <textarea id="cf-message" required></textarea>
+    </label>
+    <label class="hp" aria-hidden="true">
+      Website
+      <input type="text" id="cf-hp" tabindex="-1" autocomplete="off" />
+    </label>
+    <button type="submit">Nachricht senden</button>
+  </form>
+
+  <p class="hint">
+    Hinweis: Beim Klick auf „Nachricht senden" öffnet sich dein E-Mail-Programm
+    (Apple Mail, Outlook, Gmail-App etc.) mit deinen Angaben. Erst nach dem
+    tatsächlichen Absenden in deinem Mail-Programm ist die Nachricht bei uns.
+    Falls kein Mail-Programm konfiguriert ist, schreib direkt an
+    <a href="mailto:hello@kernelrec.com">hello@kernelrec.com</a>.
+  </p>
+
+  <footer>
+    <a href="/">Home</a>
+    <a href="/impressum">Impressum</a>
+    <a href="/datenschutz">Datenschutz</a>
+    <a href="/widerruf">Widerruf</a>
+    <a href="/agb">AGB</a>
+  </footer>
+</main>
+
+<script>
+  function sendMail(e) {
+    e.preventDefault();
+    if (document.getElementById('cf-hp').value) return false; /* honeypot */
+    var name    = document.getElementById('cf-name').value.trim();
+    var email   = document.getElementById('cf-email').value.trim();
+    var subject = document.getElementById('cf-subject').value.trim();
+    var message = document.getElementById('cf-message').value.trim();
+    var body = 'Von: ' + name + ' <' + email + '>\n\n' + message +
+               '\n\n— gesendet via kernelrec.com/kontakt';
+    var href = 'mailto:hello@kernelrec.com'
+             + '?subject=' + encodeURIComponent('[Kontakt] ' + subject)
+             + '&body='    + encodeURIComponent(body);
+    window.location.href = href;
+    return false;
+  }
+</script>
+</body>
+</html>
