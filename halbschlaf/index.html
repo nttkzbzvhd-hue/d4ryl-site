@@ -1,26 +1,25 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>HalbSchlaf — Lo-Fi Hip-Hop · Hamburg</title>
-  <meta name="description" content="HalbSchlaf — Verträumte Beats für den Moment zwischen wach und weg. Lo-Fi Hip-Hop aus Hamburg." />
+  <meta name="description" content="HalbSchlaf — Dreamy beats for the moment between awake and gone. Lo-Fi Hip-Hop from Hamburg." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&family=Spectral:ital,wght@1,300&family=Space+Mono:wght@400&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css?v=2" />
 
   <script>
     const LINKS = {
-      spotify:      '#',
-      spotifyTrack: '#',
+      spotify:      'https://open.spotify.com/track/5OIFp12afe9EuVUh7iqF8P',
+      spotifyTrack: 'https://open.spotify.com/track/5OIFp12afe9EuVUh7iqF8P',
       appleMusic:   '#',
       youtube:      '#',
-      instagram:    '#',
+      instagram:    'https://instagram.com/_halbschlaf',
       tiktok:       '#',
-      presave:      '#',
     };
   </script>
 </head>
@@ -36,7 +35,7 @@
       <span class="nav-wordmark">HalbSchlaf</span>
     </a>
     <ul class="nav-links">
-      <li><a href="#musik">Musik</a></li>
+      <li><a href="#music">Music</a></li>
       <li><a href="#shop">Shop</a></li>
       <li><a href="#links">Links</a></li>
     </ul>
@@ -55,10 +54,10 @@
       <div class="hero-wordmark-text">HalbSchlaf</div>
     </div>
 
-    <p class="hero-tagline">Verträumte Beats für den Moment<br>zwischen wach und weg.</p>
+    <p class="hero-tagline">Dreamy beats for the moment<br>between awake and gone.</p>
 
     <div class="hero-cta">
-      <a href="#musik" class="btn btn-primary">▶ Hören</a>
+      <a href="#music" class="btn btn-primary">▶ Listen</a>
     </div>
 
   </div>
@@ -66,54 +65,36 @@
 
 
 <!-- ══════════════════════════════════════════
-     3. NEW SINGLE
+     3. NEW SINGLE — Out Now
 ════════════════════════════════════════════ -->
 <section id="single">
   <div class="wrap">
     <div class="section-header">
-      <span class="label">// nächste single</span>
+      <span class="label">// new single</span>
       <h2>Zwischenraum</h2>
     </div>
 
     <div class="single-card">
       <div class="single-cover">
         <img src="assets/zwischenraum-cover.jpg" alt="HalbSchlaf — Zwischenraum" />
-        <div class="single-date-tag" id="release-tag">14 · 08 · 2026</div>
+        <div class="single-date-tag">OUT NOW</div>
       </div>
 
       <div class="single-info">
         <h3 class="single-title">Zwischenraum</h3>
         <p class="single-artist">HalbSchlaf</p>
 
-        <!-- ── Countdown Ticker ────────────────────────────────── -->
-        <div class="countdown" id="countdown" aria-label="Countdown bis Release"
-             style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:18px 0 22px;max-width:360px">
-          <div class="cd-box" style="text-align:center;padding:10px 6px;border-radius:10px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08)">
-            <div class="cd-num" id="cd-days"  style="font-family:'Space Mono',monospace;font-size:26px;font-weight:600;color:#e9d9b8;line-height:1">—</div>
-            <div class="cd-label" style="font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-top:4px">Tage</div>
-          </div>
-          <div class="cd-box" style="text-align:center;padding:10px 6px;border-radius:10px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08)">
-            <div class="cd-num" id="cd-hours" style="font-family:'Space Mono',monospace;font-size:26px;font-weight:600;color:#e9d9b8;line-height:1">—</div>
-            <div class="cd-label" style="font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-top:4px">Stunden</div>
-          </div>
-          <div class="cd-box" style="text-align:center;padding:10px 6px;border-radius:10px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08)">
-            <div class="cd-num" id="cd-mins"  style="font-family:'Space Mono',monospace;font-size:26px;font-weight:600;color:#e9d9b8;line-height:1">—</div>
-            <div class="cd-label" style="font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-top:4px">Minuten</div>
-          </div>
-          <div class="cd-box" style="text-align:center;padding:10px 6px;border-radius:10px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08)">
-            <div class="cd-num" id="cd-secs"  style="font-family:'Space Mono',monospace;font-size:26px;font-weight:600;color:#e9d9b8;line-height:1">—</div>
-            <div class="cd-label" style="font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-top:4px">Sekunden</div>
-          </div>
-        </div>
+        <p class="single-blurb" style="color:rgba(255,255,255,0.6);font-size:14px;line-height:1.55;margin:14px 0 22px;max-width:420px">
+          Between two breaths, no waking, no sleep. A hum beneath the bed, light bleeding from the wall. Out now on Spotify.
+        </p>
 
         <div class="single-actions">
-          <a href="javascript:void(0)" onclick="window.open(LINKS.presave,'_blank')" class="btn btn-primary">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
-            Pre-save
-          </a>
-          <a href="javascript:void(0)" onclick="window.open(LINKS.spotifyTrack,'_blank')" class="btn btn-outline">
+          <a href="javascript:void(0)" onclick="window.open(LINKS.spotifyTrack,'_blank')" class="btn btn-primary">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
-            Spotify
+            Play on Spotify
+          </a>
+          <a href="/zwischenraum" class="btn btn-outline">
+            Share link
           </a>
         </div>
       </div>
@@ -126,16 +107,20 @@
 <!-- ══════════════════════════════════════════
      4. MUSIC / PLAYER
 ════════════════════════════════════════════ -->
-<section id="musik">
+<section id="music">
   <div class="wrap">
     <div class="section-header">
-      <span class="label">// musik</span>
+      <span class="label">// music</span>
       <h2>Tracks</h2>
     </div>
 
     <div class="player-placeholder">
-      <span class="label">// spotify player</span>
-      <p class="mt-2">Embed verfügbar nach Release.</p>
+      <span class="label">// spotify</span>
+      <p class="mt-2">
+        <a href="https://open.spotify.com/track/5OIFp12afe9EuVUh7iqF8P" target="_blank" rel="noopener" style="color:#e9d9b8">
+          Listen to “Zwischenraum” on Spotify →
+        </a>
+      </p>
     </div>
 
   </div>
@@ -154,8 +139,8 @@
 
     <div class="shop-coming-soon">
       <span class="label">// coming soon</span>
-      <p>Beats, Sample Packs und exklusive Tracks — bald verfügbar.</p>
-      <a href="#newsletter" class="btn btn-outline">Benachrichtigt werden</a>
+      <p>Beats, sample packs and exclusive tracks — coming soon.</p>
+      <a href="#newsletter" class="btn btn-outline">Get notified</a>
     </div>
 
   </div>
@@ -168,37 +153,37 @@
 <section id="links">
   <div class="wrap">
     <div class="section-header">
-      <span class="label">// überall hören</span>
+      <span class="label">// listen everywhere</span>
       <h2>Links</h2>
     </div>
 
     <div class="links-grid">
 
-      <a href="javascript:void(0)" onclick="window.open(LINKS.spotify,'_blank')" class="link-btn">
+      <a href="javascript:void(0)" data-link="spotify" onclick="openLink(event,'spotify')" class="link-btn">
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
         Spotify
         <span class="link-btn-arrow">→</span>
       </a>
 
-      <a href="javascript:void(0)" onclick="window.open(LINKS.appleMusic,'_blank')" class="link-btn">
+      <a href="javascript:void(0)" data-link="appleMusic" onclick="openLink(event,'appleMusic')" class="link-btn">
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.994 6.124a9.23 9.23 0 00-.24-2.19c-.317-1.31-1.062-2.31-2.18-3.043a5.022 5.022 0 00-1.877-.726 10.496 10.496 0 00-1.564-.15c-.04-.003-.083-.01-.124-.013H5.986c-.152.01-.303.017-.455.026C4.786.07 4.043.15 3.34.428 2.004.958 1.04 1.88.475 3.208a4.92 4.92 0 00-.35 1.466c-.06.557-.077 1.117-.09 1.677-.013.596-.01 1.195-.01 1.794V15.85c0 .6-.003 1.198.01 1.795.013.56.03 1.12.09 1.677a4.92 4.92 0 00.35 1.466c.565 1.328 1.53 2.25 2.865 2.78.703.278 1.446.358 2.191.41.152.01.303.016.455.026H18.01c.04-.003.082-.008.123-.013a10.496 10.496 0 001.565-.15 5.022 5.022 0 001.877-.726c1.118-.734 1.863-1.734 2.18-3.043a9.23 9.23 0 00.24-2.19c.012-.468.016-.938.016-1.407V7.53c0-.469-.004-.939-.017-1.406zm-7.35 9.876a.75.75 0 01-.75.75H8.106a.75.75 0 010-1.5h7.788a.75.75 0 01.75.75zm0-3a.75.75 0 01-.75.75H8.106a.75.75 0 010-1.5h7.788a.75.75 0 01.75.75zm0-3a.75.75 0 01-.75.75H8.106a.75.75 0 010-1.5h7.788a.75.75 0 01.75.75z"/></svg>
         Apple Music
         <span class="link-btn-arrow">→</span>
       </a>
 
-      <a href="javascript:void(0)" onclick="window.open(LINKS.youtube,'_blank')" class="link-btn">
+      <a href="javascript:void(0)" data-link="youtube" onclick="openLink(event,'youtube')" class="link-btn">
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.495 6.205a3.007 3.007 0 00-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 00.527 6.205a31.247 31.247 0 00-.522 5.805 31.247 31.247 0 00.522 5.783 3.007 3.007 0 002.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 002.088-2.088 31.247 31.247 0 00.5-5.783 31.247 31.247 0 00-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
         YouTube
         <span class="link-btn-arrow">→</span>
       </a>
 
-      <a href="javascript:void(0)" onclick="window.open(LINKS.instagram,'_blank')" class="link-btn">
+      <a href="javascript:void(0)" data-link="instagram" onclick="openLink(event,'instagram')" class="link-btn">
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
         Instagram
         <span class="link-btn-arrow">→</span>
       </a>
 
-      <a href="javascript:void(0)" onclick="window.open(LINKS.tiktok,'_blank')" class="link-btn">
+      <a href="javascript:void(0)" data-link="tiktok" onclick="openLink(event,'tiktok')" class="link-btn">
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.77 1.52v-3.4a4.85 4.85 0 01-1-.12z"/></svg>
         TikTok
         <span class="link-btn-arrow">→</span>
@@ -216,23 +201,23 @@
   <div class="wrap">
     <div class="section-header">
       <span class="label">// newsletter</span>
-      <h2>Bleib dabei</h2>
+      <h2>Stay tuned</h2>
     </div>
 
     <div class="newsletter-card">
-      <h3>Neue Tracks &amp; Releases</h3>
-      <p>Kein Spam. Nur das Wesentliche — direkt wenn es passiert.</p>
+      <h3>New tracks &amp; releases</h3>
+      <p>No spam. Just the essentials — the moment they drop.</p>
 
       <form class="newsletter-form" onsubmit="handleSubmit(event)">
         <input
           type="email"
           name="email"
-          placeholder="deine@email.de"
+          placeholder="you@email.com"
           required
           autocomplete="email"
-          aria-label="E-Mail Adresse"
+          aria-label="Email address"
         />
-        <button type="submit" class="btn btn-primary">Abonnieren</button>
+        <button type="submit" class="btn btn-primary">Subscribe</button>
       </form>
     </div>
   </div>
@@ -254,11 +239,11 @@
         <a href="mailto:hello@kernelrec.com">hello@kernelrec.com</a> &nbsp;·&nbsp;
         <a href="mailto:sync@kernelrec.com">sync@kernelrec.com</a> &nbsp;·&nbsp;
         <a href="mailto:press@kernelrec.com">press@kernelrec.com</a><br/>
-        <a href="/impressum">Impressum</a> &nbsp;·&nbsp;
-        <a href="/datenschutz">Datenschutz</a> &nbsp;·&nbsp;
-        <a href="/widerruf">Widerruf</a> &nbsp;·&nbsp;
-        <a href="/agb">AGB</a> &nbsp;·&nbsp;
-        <a href="/kontakt">Kontakt</a>
+        <a href="/impressum">Imprint</a> &nbsp;·&nbsp;
+        <a href="/datenschutz">Privacy</a> &nbsp;·&nbsp;
+        <a href="/widerruf">Withdrawal</a> &nbsp;·&nbsp;
+        <a href="/agb">Terms</a> &nbsp;·&nbsp;
+        <a href="/kontakt">Contact</a>
       </div>
     </div>
   </div>
@@ -269,41 +254,31 @@
     e.preventDefault();
     const btn = e.target.querySelector('button');
     const orig = btn.textContent;
-    btn.textContent = '✓ Eingetragen';
+    btn.textContent = '✓ Subscribed';
     btn.disabled = true;
     setTimeout(() => { btn.textContent = orig; btn.disabled = false; }, 3000);
   }
 
-  // ── Release-Countdown "Zwischenraum" ─────────────────────────────
-  // Release: 14.08.2026 00:00 Berlin-Zeit (CEST = UTC+2)
+  // Open link if configured, otherwise no-op
+  function openLink(e, key) {
+    e.preventDefault();
+    const url = LINKS[key];
+    if (!url || url === '#') return;
+    window.open(url, '_blank', 'noopener');
+  }
+
+  // Auto-dim & label link buttons whose URL isn't set yet
   (function () {
-    const RELEASE = new Date('2026-08-14T00:00:00+02:00').getTime();
-    const $d = document.getElementById('cd-days');
-    const $h = document.getElementById('cd-hours');
-    const $m = document.getElementById('cd-mins');
-    const $s = document.getElementById('cd-secs');
-    const $tag = document.getElementById('release-tag');
-    if (!$d) return;
-    const pad = n => String(Math.max(0, n)).padStart(2, '0');
-    function tick() {
-      const now = Date.now();
-      const diff = RELEASE - now;
-      if (diff <= 0) {
-        $d.textContent = '00'; $h.textContent = '00'; $m.textContent = '00'; $s.textContent = '00';
-        if ($tag) $tag.textContent = 'OUT NOW';
-        return;
+    document.querySelectorAll('.link-btn[data-link]').forEach(btn => {
+      const key = btn.getAttribute('data-link');
+      const url = LINKS[key];
+      if (!url || url === '#') {
+        btn.style.opacity = '0.35';
+        btn.style.cursor  = 'not-allowed';
+        const arrow = btn.querySelector('.link-btn-arrow');
+        if (arrow) arrow.textContent = 'soon';
       }
-      const days  = Math.floor(diff / 86_400_000);
-      const hours = Math.floor((diff % 86_400_000) / 3_600_000);
-      const mins  = Math.floor((diff % 3_600_000) / 60_000);
-      const secs  = Math.floor((diff % 60_000) / 1_000);
-      $d.textContent = pad(days);
-      $h.textContent = pad(hours);
-      $m.textContent = pad(mins);
-      $s.textContent = pad(secs);
-    }
-    tick();
-    setInterval(tick, 1000);
+    });
   })();
 </script>
 
