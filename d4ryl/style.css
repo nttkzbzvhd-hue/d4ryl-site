@@ -345,6 +345,72 @@ section { padding: 72px 0; }
   padding-left: 34px;
 }
 
+/* ── Upcoming (Electrix⚡️) ────────────────── */
+#upcoming { border-bottom: 1px solid var(--border); padding: 32px 0; }
+.upcoming-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+}
+@media (min-width: 640px) {
+  .upcoming-card { grid-template-columns: 260px 1fr; }
+}
+.upcoming-cover {
+  aspect-ratio: 1/1;
+  background: var(--bg-card);
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border);
+}
+@media (min-width: 640px) {
+  .upcoming-cover { border-bottom: none; border-right: 1px solid var(--border); }
+}
+.upcoming-cover img {
+  width: 100%; height: 100%; object-fit: cover;
+  filter: brightness(0.92) saturate(0.94);   /* dezenter Pre-Release-Look */
+}
+.upcoming-date-tag {
+  position: absolute;
+  top: 12px; right: 12px;
+  background: rgba(5,8,13,0.85);
+  border: 1px solid rgba(240,168,48,0.35);
+  border-radius: 2px;
+  padding: 4px 10px;
+  font-family: var(--mono);
+  font-size: 10px; letter-spacing: 0.14em;
+  color: #f0a830;
+  text-transform: uppercase;
+}
+.upcoming-info { padding: 22px 24px; display: flex; flex-direction: column; justify-content: center; }
+.upcoming-title {
+  font-size: 1.5rem; letter-spacing: -0.02em; margin: 0 0 4px;
+}
+.upcoming-flash { display: inline-block; margin-left: 2px; }
+.upcoming-artist {
+  font-family: var(--mono);
+  font-size: 10px; letter-spacing: 0.14em;
+  color: var(--text-muted); text-transform: uppercase;
+  margin: 0 0 18px;
+}
+.upcoming-release-line {
+  font-size: 0.95rem;
+  color: var(--text);
+  margin: 0 0 18px;
+  line-height: 1.5;
+}
+.upcoming-release-line strong { color: #f0a830; font-weight: 600; }
+.upcoming-countdown {
+  font-family: var(--mono);
+  font-size: 11px; letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin-left: 6px;
+}
+.upcoming-actions { display: flex; gap: 8px; }
+
 /* ── Musik / Player ──────────────────────── */
 #musik { border-bottom: 1px solid var(--border); }
 .player-embed {

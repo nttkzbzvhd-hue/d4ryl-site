@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="style.css?v=8" />
+  <link rel="stylesheet" href="style.css?v=9" />
 
   <script>
     /* ─── All external links here ─── */
@@ -28,6 +28,9 @@
       presave:      'https://social.tunecore.com/linkShare?linkid=vv6OUnrHz10LOqzD3NhVyw',
       /* HD Bundle — Stripe Payment Link */
       hdBundle:     'https://buy.stripe.com/fZuaEXgYg3dj6AB9121gs00',
+      /* Upcoming — Electrix⚡️ Release 2026-09-26. Presave-Link kommt von TuneCore
+         wenn Deniz Pre-Save aktiviert; solange leer → Button gedimmt/inaktiv. */
+      electrixPresave: '',
       /* Shop links (Phase 2) */
       shopBeats:    '#',   /* TODO: Gumroad / Bandcamp Beats */
       shopPacks:    '#',   /* TODO: Sample Packs */
@@ -48,6 +51,7 @@
     </a>
     <ul class="nav-links">
       <li><a href="#musik">Music</a></li>
+      <li><a href="#upcoming">Upcoming</a></li>
       <li><a href="https://buy.stripe.com/fZuaEXgYg3dj6AB9121gs00" target="_blank" rel="noopener">Shop</a></li>
       <li><a href="#links">Links</a></li>
     </ul>
@@ -125,6 +129,40 @@
       </div>
     </div>
 
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     3b. UPCOMING — Electrix⚡️ (Release 2026-09-26)
+════════════════════════════════════════════ -->
+<section id="upcoming">
+  <div class="wrap">
+    <div class="section-header">
+      <span class="label">// coming soon</span>
+      <h2>Upcoming</h2>
+    </div>
+
+    <div class="upcoming-card">
+      <div class="upcoming-cover">
+        <img src="assets/cover-electrix.jpg" alt="D4RYL — Electrix⚡️ Cover" />
+        <div class="upcoming-date-tag" id="electrix-date-tag">26 Sep</div>
+      </div>
+      <div class="upcoming-info">
+        <h3 class="upcoming-title">Electrix<span class="upcoming-flash">⚡️</span></h3>
+        <p class="upcoming-artist">D4RYL</p>
+        <p class="upcoming-release-line" id="electrix-release-line">
+          Release <strong>Sat, 26 September 2026</strong>
+          <span class="upcoming-countdown" id="electrix-countdown"></span>
+        </p>
+        <div class="upcoming-actions">
+          <a href="javascript:void(0)" data-link="electrixPresave" onclick="openLinkOrDim(event,'electrixPresave')" class="btn btn-primary" id="electrix-presave">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+            Pre-Save
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -384,6 +422,44 @@
     /* TODO: add real Brevo API call or form action */
     console.log('Newsletter signup:', email);
   }
+
+  /* ─── Upcoming: Presave-Link öffnen oder Button dimmen ── */
+  function openLinkOrDim(e, key) {
+    e.preventDefault();
+    var url = LINKS[key];
+    if (!url) return;   // Auto-Dim-Loop hat den Button schon markiert
+    window.open(url, '_blank', 'noopener');
+  }
+  (function(){
+    document.querySelectorAll('[data-link]').forEach(function(el){
+      var key = el.getAttribute('data-link');
+      var url = LINKS[key];
+      if (!url || url === '#') {
+        el.style.opacity = '0.4';
+        el.style.cursor  = 'not-allowed';
+        el.setAttribute('title', 'Kommt bald');
+        if (el.id === 'electrix-presave') {
+          var span = el.querySelector('span');
+          if (!span) el.appendChild(Object.assign(document.createElement('span'), { textContent: ' (kommt bald)' }));
+        }
+      }
+    });
+  })();
+
+  /* ─── Electrix Release-Countdown (Europe/Berlin) ── */
+  (function(){
+    var target = new Date('2026-09-26T00:00:00+02:00').getTime();
+    var el = document.getElementById('electrix-countdown');
+    if (!el) return;
+    function tick(){
+      var diff = target - Date.now();
+      if (diff <= 0) { el.textContent = '· heute!'; return; }
+      var days = Math.floor(diff / 86400000);
+      el.textContent = days > 0 ? '· in ' + days + ' Tagen' : '· heute';
+    }
+    tick();
+    setInterval(tick, 3600 * 1000);
+  })();
 
   /* ─── Spotify 2-Click-Load (DSGVO/TTDSG) ── */
   (function(){
