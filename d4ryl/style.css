@@ -288,53 +288,61 @@ section { padding: 72px 0; }
 .single-actions .btn svg { width: 10px; height: 10px; flex-shrink: 0; }
 
 .btn-hd-bundle {
-  display: flex;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
   align-items: center;
-  gap: 10px;
-  margin-top: 10px;
-  padding: 12px 14px;
-  border-radius: var(--radius);
+  column-gap: 14px;
+  row-gap: 8px;
+  margin-top: 32px;
+  padding: 18px 20px;
+  border-radius: 6px;
   border: 1px solid rgba(240,168,48,0.35);
-  background: linear-gradient(135deg, rgba(240,168,48,0.10), rgba(138,48,127,0.14));
+  background: linear-gradient(135deg, rgba(240,168,48,0.10), rgba(138,48,127,0.16));
   color: #f0d9a8;
   font-family: var(--mono);
-  font-size: 10px;
-  letter-spacing: 0.12em;
+  font-size: 11px;
+  letter-spacing: 0.10em;
   text-transform: uppercase;
   text-decoration: none;
   cursor: pointer;
-  transition: border-color .2s, background .2s, transform .1s;
+  white-space: normal;                    /* override .btn's nowrap */
+  box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+  transition: border-color .2s, background .2s, transform .1s, box-shadow .2s;
 }
+.btn-hd-bundle > span { min-width: 0; }   /* let grid children shrink */
 .btn-hd-bundle:hover {
   border-color: rgba(240,168,48,0.7);
-  background: linear-gradient(135deg, rgba(240,168,48,0.18), rgba(138,48,127,0.22));
+  background: linear-gradient(135deg, rgba(240,168,48,0.18), rgba(138,48,127,0.24));
+  box-shadow: 0 4px 24px rgba(240,168,48,0.15);
 }
 .btn-hd-bundle:active { transform: translateY(1px); }
-.btn-hd-bundle svg { color: #f0a830; flex-shrink: 0; }
-.btn-hd-bundle .btn-hd-price {
-  margin-left: 8px;
-  padding: 3px 8px;
-  border-radius: 999px;
-  background: rgba(240,168,48,0.18);
+.btn-hd-bundle svg {
   color: #f0a830;
-  font-size: 10px;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+}
+.btn-hd-bundle .btn-hd-price {
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: rgba(240,168,48,0.20);
+  color: #f0a830;
+  font-size: 12px;
   letter-spacing: 0.06em;
   white-space: nowrap;
 }
 .btn-hd-bundle .btn-hd-tax {
   opacity: 0.7;
-  font-size: 8px;
+  font-size: 9px;
   letter-spacing: 0.04em;
 }
 .btn-hd-bundle .btn-hd-meta {
-  margin-left: auto;
+  grid-column: 1 / -1;
   color: var(--text-muted);
-  font-size: 8px;
+  font-size: 10px;
   letter-spacing: 0.08em;
   text-transform: none;
-}
-@media (max-width: 480px) {
-  .btn-hd-bundle .btn-hd-meta { display: none; }
+  padding-left: 34px;
 }
 
 /* ── Musik / Player ──────────────────────── */

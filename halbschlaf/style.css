@@ -434,6 +434,65 @@ section { padding: 72px 0; }
 .mt-2 { margin-top: 8px; }
 .mt-4 { margin-top: 16px; }
 
+/* ── HD Bundle Button (Halbschlaf-Palette: warm × accent) ── */
+.btn-hd-bundle {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  column-gap: 14px;
+  row-gap: 8px;
+  margin-top: 32px;
+  padding: 18px 20px;
+  border-radius: 6px;
+  border: 1px solid rgba(255,215,157,0.35);
+  background: linear-gradient(135deg, rgba(255,215,157,0.10), rgba(241,98,255,0.16));
+  color: #f6e2c1;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  white-space: normal;                    /* override .btn's nowrap */
+  box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+  transition: border-color .2s, background .2s, transform .1s, box-shadow .2s;
+}
+.btn-hd-bundle > span { min-width: 0; }   /* let grid children shrink */
+.btn-hd-bundle:hover {
+  border-color: rgba(255,215,157,0.7);
+  background: linear-gradient(135deg, rgba(255,215,157,0.18), rgba(241,98,255,0.24));
+  box-shadow: 0 4px 24px rgba(241,98,255,0.15);
+}
+.btn-hd-bundle:active { transform: translateY(1px); }
+.btn-hd-bundle svg {
+  color: var(--warm);
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+}
+.btn-hd-bundle .btn-hd-price {
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: rgba(255,215,157,0.20);
+  color: var(--warm);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+.btn-hd-bundle .btn-hd-tax {
+  opacity: 0.7;
+  font-size: 9px;
+  letter-spacing: 0.04em;
+}
+.btn-hd-bundle .btn-hd-meta {
+  grid-column: 1 / -1;
+  color: var(--text-muted);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: none;
+  padding-left: 34px;
+}
+
 /* ── Responsive ──────────────────────────── */
 @media (min-width: 520px) {
   .newsletter-form { flex-direction: row; }
