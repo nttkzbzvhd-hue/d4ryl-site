@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>D4RYL — Trap & Lofi · Hamburg</title>
-  <meta name="description" content="D4RYL — Trap & Lofi from Hamburg. New single ADollar?! out now." />
+  <title>D4RYL — Electrix⚡️ · Hamburg</title>
+  <meta name="description" content="D4RYL — new single Electrix⚡️ out now. Trap & Lofi from Hamburg." />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -17,20 +17,17 @@
     /* ─── All external links here ─── */
     const LINKS = {
       spotify:      'https://open.spotify.com/artist/0kjt87JlZYZmEQSwPVGuLr',
-      spotifyTrack: 'https://open.spotify.com/track/5pa5YSoB54NfG3o4RVt9NO',
-      appleMusic:   'https://music.apple.com/de/album/adollar/6781027348?i=6781027355',
-      amazonMusic:  'https://music.amazon.de/albums/B0H5MH1BFW?marketplaceId=A1PA6795UKMFR9&musicTerritory=DE&ref=dm_sh_TWYAtNJG3s261kwolO6T8zOp4&trackAsin=B0H5MT1HZ3',
-      smartLink:    'https://social.tunecore.com/linkShare?linkid=vv6OUnrHz10LOqzD3NhVyw',
-      youtube:      'https://www.youtube.com/watch?v=wwgW_oOKVOY',
-      youtubeTrack: 'https://www.youtube.com/watch?v=wwgW_oOKVOY',
+      /* Current single — Electrix⚡️ (Released 2026-09-26) */
+      electrixSmartLink: 'https://social.tunecore.com/linkShare?linkid=ZdP2tnXfyVC8Jw1M-Q3M-w',
+      /* Electrix HD Bundle — Stripe Payment Link (live, erstellt 2026-10-17 via setup_bundle.py) */
+      electrixHdBundle:  'https://buy.stripe.com/3cI14nbDW29f5wx6SU1gs02',
+      /* Previous release — ADollar?! (Released 2026-08-xx) */
+      adollarSmartLink:  'https://social.tunecore.com/linkShare?linkid=vv6OUnrHz10LOqzD3NhVyw',
+      adollarHdBundle:   'https://buy.stripe.com/fZuaEXgYg3dj6AB9121gs00',
+      /* Socials */
       instagram:    'https://www.instagram.com/d4ryl_beatz/',
       tiktok:       'https://www.tiktok.com/@d4ryl.ink',
-      presave:      'https://social.tunecore.com/linkShare?linkid=vv6OUnrHz10LOqzD3NhVyw',
-      /* HD Bundle — Stripe Payment Link */
-      hdBundle:     'https://buy.stripe.com/fZuaEXgYg3dj6AB9121gs00',
-      /* Upcoming — Electrix⚡️ Release 2026-09-26. Presave-Link kommt von TuneCore
-         wenn Deniz Pre-Save aktiviert; solange leer → Button gedimmt/inaktiv. */
-      electrixPresave: '',
+      youtube:      'https://www.youtube.com/watch?v=wwgW_oOKVOY',
       /* Shop links (Phase 2) */
       shopBeats:    '#',   /* TODO: Gumroad / Bandcamp Beats */
       shopPacks:    '#',   /* TODO: Sample Packs */
@@ -50,9 +47,9 @@
       <span class="nav-wordmark">D<span class="accent-4">4</span>RYL</span>
     </a>
     <ul class="nav-links">
+      <li><a href="#single">Out Now</a></li>
       <li><a href="#musik">Music</a></li>
-      <li><a href="#upcoming">Upcoming</a></li>
-      <li><a href="https://buy.stripe.com/fZuaEXgYg3dj6AB9121gs00" target="_blank" rel="noopener">Shop</a></li>
+      <li><a href="#previous">Previous</a></li>
       <li><a href="#links">Links</a></li>
     </ul>
   </div>
@@ -81,46 +78,33 @@
 
 
 <!-- ══════════════════════════════════════════
-     3. NEW SINGLE
+     3. NEW SINGLE — Electrix⚡️ (Released 2026-09-26)
 ════════════════════════════════════════════ -->
 <section id="single">
   <div class="wrap">
     <div class="section-header">
       <span class="label" id="single-label">// out now</span>
-      <h2 id="release-heading" class="release-live" aria-label="ADollar?! is out now">Out Now</h2>
+      <h2 id="release-heading" class="release-live" aria-label="Electrix is out now">Out Now</h2>
     </div>
 
     <div class="single-card">
 
-      <!-- Cover — replace assets/cover.jpg with the real artwork -->
       <div class="single-cover">
-        <img src="assets/cover-adollar.jpg" alt="D4RYL – ADollar?! Cover" />
+        <img src="assets/cover-electrix.jpg" alt="D4RYL — Electrix⚡️ Cover" />
         <div class="single-date-tag" id="single-date-tag">Out Now</div>
       </div>
 
       <div class="single-info">
-        <h3 class="single-title">ADollar?!</h3>
+        <h3 class="single-title">Electrix<span class="upcoming-flash">⚡️</span></h3>
         <p class="single-artist">D4RYL</p>
         <div class="single-actions">
-          <a href="javascript:void(0)" onclick="window.open(LINKS.spotifyTrack,'_blank')" class="btn btn-primary">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
-            Spotify
-          </a>
-          <a href="javascript:void(0)" onclick="window.open(LINKS.appleMusic,'_blank')" class="btn btn-outline">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M23.994 6.124a9.23 9.23 0 00-.24-2.19c-.317-1.31-1.062-2.31-2.18-3.043a5.022 5.022 0 00-1.877-.726 10.496 10.496 0 00-1.564-.15c-.04-.003-.083-.01-.124-.013H5.986c-.152.01-.303.017-.455.026C4.786.07 4.043.15 3.34.428 2.004.958 1.04 1.88.475 3.208a4.92 4.92 0 00-.35 1.466c-.06.557-.077 1.117-.09 1.677-.013.596-.01 1.195-.01 1.794V15.85c0 .6-.003 1.198.01 1.795.013.56.03 1.12.09 1.677a4.92 4.92 0 00.35 1.466c.565 1.328 1.53 2.25 2.865 2.78.703.278 1.446.358 2.191.41.152.01.303.016.455.026H18.01c.04-.003.082-.008.123-.013a10.496 10.496 0 001.565-.15 5.022 5.022 0 001.877-.726c1.118-.734 1.863-1.734 2.18-3.043a9.23 9.23 0 00.24-2.19c.012-.468.016-.938.016-1.407V7.53c0-.469-.004-.939-.017-1.406zm-7.35 9.876a.75.75 0 01-.75.75H8.106a.75.75 0 010-1.5h7.788a.75.75 0 01.75.75zm0-3a.75.75 0 01-.75.75H8.106a.75.75 0 010-1.5h7.788a.75.75 0 01.75.75zm0-3a.75.75 0 01-.75.75H8.106a.75.75 0 010-1.5h7.788a.75.75 0 01.75.75z"/></svg>
-            Apple Music
-          </a>
-          <a href="javascript:void(0)" onclick="window.open(LINKS.youtubeTrack,'_blank')" class="btn btn-outline">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M23.495 6.205a3.007 3.007 0 00-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 00.527 6.205a31.247 31.247 0 00-.522 5.805 31.247 31.247 0 00.522 5.783 3.007 3.007 0 002.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 002.088-2.088 31.247 31.247 0 00.5-5.783 31.247 31.247 0 00-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
-            YouTube
-          </a>
-          <a href="javascript:void(0)" onclick="window.open(LINKS.amazonMusic,'_blank')" class="btn btn-outline">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm3 6l-5 1v6.5A2.5 2.5 0 118.5 13c.18 0 .35.02.5.06V8l7-1.4v6.9A2.5 2.5 0 1113.5 11c.18 0 .35.02.5.06V8z"/></svg>
-            Amazon Music
+          <a href="javascript:void(0)" onclick="window.open(LINKS.electrixSmartLink,'_blank')" class="btn btn-primary">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg>
+            Listen on all platforms
           </a>
         </div>
 
-        <a href="javascript:void(0)" onclick="window.open(LINKS.hdBundle,'_blank')" class="btn btn-hd-bundle">
+        <a href="javascript:void(0)" data-link="electrixHdBundle" onclick="openLinkOrDim(event,'electrixHdBundle')" class="btn btn-hd-bundle" id="electrix-hd-btn">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9V7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v2"/><path d="M3 9h18v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9z"/><circle cx="12" cy="15" r="2.5"/></svg>
           <span>HD Bundle</span>
           <span class="btn-hd-price">4 &nbsp;€&nbsp;<span class="btn-hd-tax">inkl. USt.</span></span>
@@ -134,33 +118,35 @@
 
 
 <!-- ══════════════════════════════════════════
-     3b. UPCOMING — Electrix⚡️ (Release 2026-09-26)
+     3b. PREVIOUS RELEASE — ADollar?! (Released 2026-08)
 ════════════════════════════════════════════ -->
-<section id="upcoming">
+<section id="previous">
   <div class="wrap">
     <div class="section-header">
-      <span class="label">// coming soon</span>
-      <h2>Upcoming</h2>
+      <span class="label">// previous</span>
+      <h2>Previous Release</h2>
     </div>
 
-    <div class="upcoming-card">
-      <div class="upcoming-cover">
-        <img src="assets/cover-electrix.jpg" alt="D4RYL — Electrix⚡️ Cover" />
-        <div class="upcoming-date-tag" id="electrix-date-tag">26 Sep</div>
+    <div class="single-card">
+      <div class="single-cover">
+        <img src="assets/cover-adollar.jpg" alt="D4RYL — ADollar?! Cover" />
       </div>
-      <div class="upcoming-info">
-        <h3 class="upcoming-title">Electrix<span class="upcoming-flash">⚡️</span></h3>
-        <p class="upcoming-artist">D4RYL</p>
-        <p class="upcoming-release-line" id="electrix-release-line">
-          Release <strong>Sat, 26 September 2026</strong>
-          <span class="upcoming-countdown" id="electrix-countdown"></span>
-        </p>
-        <div class="upcoming-actions">
-          <a href="javascript:void(0)" data-link="electrixPresave" onclick="openLinkOrDim(event,'electrixPresave')" class="btn btn-primary" id="electrix-presave">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
-            Pre-Save
+      <div class="single-info">
+        <h3 class="single-title">ADollar?!</h3>
+        <p class="single-artist">D4RYL</p>
+        <div class="single-actions">
+          <a href="javascript:void(0)" onclick="window.open(LINKS.adollarSmartLink,'_blank')" class="btn btn-primary">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg>
+            Listen on all platforms
           </a>
         </div>
+
+        <a href="javascript:void(0)" onclick="window.open(LINKS.adollarHdBundle,'_blank')" class="btn btn-hd-bundle">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9V7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v2"/><path d="M3 9h18v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9z"/><circle cx="12" cy="15" r="2.5"/></svg>
+          <span>HD Bundle</span>
+          <span class="btn-hd-price">4 &nbsp;€&nbsp;<span class="btn-hd-tax">inkl. USt.</span></span>
+          <span class="btn-hd-meta">24-bit WAV/FLAC · Cover · Liner Notes</span>
+        </a>
       </div>
     </div>
   </div>
@@ -178,7 +164,7 @@
     </div>
 
     <div class="player-embed" id="spotify-embed"
-         data-src="https://open.spotify.com/embed/track/5pa5YSoB54NfG3o4RVt9NO?utm_source=generator&theme=0">
+         data-src="https://open.spotify.com/embed/artist/0kjt87JlZYZmEQSwPVGuLr?utm_source=generator&theme=0">
       <div class="player-consent">
         <div class="player-consent-inner">
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 15c2.5-1.5 5.5-1.5 8 0"/><path d="M7.5 12c3-1.5 6.5-1.5 9.5 0"/><path d="M7 9c3.5-1.5 7-1.5 10 0"/></svg>
@@ -423,7 +409,7 @@
     console.log('Newsletter signup:', email);
   }
 
-  /* ─── Upcoming: Presave-Link öffnen oder Button dimmen ── */
+  /* ─── Button-URL fallback: öffnen oder dimmen falls LINKS[key] leer ── */
   function openLinkOrDim(e, key) {
     e.preventDefault();
     var url = LINKS[key];
@@ -438,27 +424,8 @@
         el.style.opacity = '0.4';
         el.style.cursor  = 'not-allowed';
         el.setAttribute('title', 'Kommt bald');
-        if (el.id === 'electrix-presave') {
-          var span = el.querySelector('span');
-          if (!span) el.appendChild(Object.assign(document.createElement('span'), { textContent: ' (kommt bald)' }));
-        }
       }
     });
-  })();
-
-  /* ─── Electrix Release-Countdown (Europe/Berlin) ── */
-  (function(){
-    var target = new Date('2026-09-26T00:00:00+02:00').getTime();
-    var el = document.getElementById('electrix-countdown');
-    if (!el) return;
-    function tick(){
-      var diff = target - Date.now();
-      if (diff <= 0) { el.textContent = '· heute!'; return; }
-      var days = Math.floor(diff / 86400000);
-      el.textContent = days > 0 ? '· in ' + days + ' Tagen' : '· heute';
-    }
-    tick();
-    setInterval(tick, 3600 * 1000);
   })();
 
   /* ─── Spotify 2-Click-Load (DSGVO/TTDSG) ── */
@@ -471,11 +438,11 @@
       var iframe = document.createElement('iframe');
       iframe.setAttribute('src', src);
       iframe.setAttribute('width', '100%');
-      iframe.setAttribute('height', '152');
+      iframe.setAttribute('height', '352');
       iframe.setAttribute('frameborder', '0');
       iframe.setAttribute('allow', 'autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture');
       iframe.setAttribute('loading', 'lazy');
-      iframe.setAttribute('title', 'ADollar?! on Spotify');
+      iframe.setAttribute('title', 'D4RYL on Spotify');
       iframe.style.borderRadius = '4px';
       wrap.innerHTML = '';
       wrap.appendChild(iframe);
